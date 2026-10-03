@@ -1,0 +1,722 @@
+{
+  "species": "FLOATER",
+  "source": "FLOATER.PCK death frames 64-66 (violet pixels, battlescape palette indices 195-202)",
+  "palette_srgb": {
+    "thick": "#6c1870",
+    "dark": "#7c308c",
+    "mid": "#8c4ca8",
+    "base": "#975db4",
+    "light": "#a06cc4",
+    "thin": "#ac80d0"
+  },
+  "palette_linear": {
+    "thick": [
+      0.14996,
+      0.00913,
+      0.16203
+    ],
+    "dark": [
+      0.20156,
+      0.02956,
+      0.26225
+    ],
+    "mid": [
+      0.26225,
+      0.07227,
+      0.39157
+    ],
+    "base": [
+      0.30947,
+      0.10946,
+      0.45641
+    ],
+    "light": [
+      0.35153,
+      0.14996,
+      0.55201
+    ],
+    "thin": [
+      0.41254,
+      0.21586,
+      0.63076
+    ]
+  },
+  "per_unit_parameter": {
+    "blood_color_srgb": "#975db4",
+    "blood_color_linear": [
+      0.30947,
+      0.10946,
+      0.45641
+    ],
+    "note": "Textures are tint-neutral (RGB thickness luminance, A coverage); multiply by this colour. Splatter / pool shapes are shared with the Sectoid set."
+  },
+  "material": {
+    "godot": "StandardMaterial3D",
+    "albedo_color_srgb": "#975db4",
+    "roughness": 0.12,
+    "metallic": 0.0,
+    "specular": 0.6,
+    "clearcoat": 0.4,
+    "clearcoat_roughness": 0.1,
+    "note": "wet, slightly glossy film; decals use the ORM maps (roughness .08 thick .. .30 thin)"
+  },
+  "dead_overlay": {
+    "resolution": 1024,
+    "uv_set": "UV0 of the FLOATER mesh, FLOATER_skin surface",
+    "covered_texels": 12506,
+    "wound_center_blender_m": [
+      -0.17,
+      "front surface",
+      1.58
+    ]
+  },
+  "decals": {
+    "splat_size_m": [
+      1.1,
+      1.1
+    ],
+    "pool_size_m": [
+      1.5,
+      1.5
+    ],
+    "projection_depth_m": 0.3,
+    "godot": "Decal: texture_albedo/normal/orm, modulate = blood colour, albedo_mix 1, normal_fade .3, upper/lower_fade .3; pool under the frozen corpse, kept inside the death tile"
+  },
+  "spray": {
+    "flipbook": "2x2 (256 px frames)",
+    "direction": "+X of the sprite = spray direction",
+    "frame_coverage_alpha_gt_half": [
+      0.035,
+      0.04,
+      0.033,
+      0.025
+    ],
+    "suggested_particle_size_m": [
+      0.1,
+      0.22
+    ],
+    "suggested_amount": 18,
+    "godot": "GPUParticles3D billboard (velocity-aligned), particles_anim_h_frames 2, v_frames 2, color = blood colour; sized for battlescape zoom (root lab note)"
+  },
+  "runtime_files": {
+    "spray_flipbook": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v1_blood_spray_flipbook_2x2.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v1_blood_spray_flipbook_2x2.png",
+      "sha256": "d9aebc5c09277bc1080ed54396ebdf6567e936d2fbb04fff7efffaf5519b4d8a",
+      "colorspace": "sRGB"
+    },
+    "dead_overlay_uv0": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v1_blood_dead_overlay_uv0.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v1_blood_dead_overlay_uv0.png",
+      "sha256": "8ebf2bfb80f0ad9099e1b88de971abc7084405998f833f8c12b91fdcc281af37",
+      "colorspace": "sRGB"
+    },
+    "splat01_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_splat01_albedo.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat01_albedo.png",
+      "sha256": "e2ae70971931da374b42c6400b8c0b78fa4e7e30d8520a35e1a85040242a1eb7",
+      "colorspace": "sRGB",
+      "shared_with": "units/SECTOID"
+    },
+    "splat01_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_splat01_normal.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat01_normal.png",
+      "sha256": "67b7271f5e3c19afbb73278c45574a6d5aac8b57cc44d7161bb6515b758be097",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SECTOID"
+    },
+    "splat01_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_splat01_orm.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat01_orm.png",
+      "sha256": "83063f64d9f6c8f5de5f68e7db9b8c670b2667438d28e58c0ec5bea8ef186758",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SECTOID"
+    },
+    "splat02_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_splat02_albedo.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat02_albedo.png",
+      "sha256": "903f7d7afae3a6e50c5810815734f72cc386c399f83ea2b42a2aba4ba0e73e49",
+      "colorspace": "sRGB",
+      "shared_with": "units/SECTOID"
+    },
+    "splat02_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_splat02_normal.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat02_normal.png",
+      "sha256": "c43b412280099fbed2cab796361c1c19816dea0f0347ae9e07059e2005b4d6df",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SECTOID"
+    },
+    "splat02_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_splat02_orm.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat02_orm.png",
+      "sha256": "9c1ac15e5038da2328914b2682f3f4ad0bb7d2434952ed458d15f9ab0be66c9a",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SECTOID"
+    },
+    "splat03_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_splat03_albedo.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat03_albedo.png",
+      "sha256": "cf564da078d2c9953a7b4e724873fada85b6a7f0a05ad85bf4fc580792cba860",
+      "colorspace": "sRGB",
+      "shared_with": "units/SECTOID"
+    },
+    "splat03_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_splat03_normal.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat03_normal.png",
+      "sha256": "444523f8091c7aa0953778f201ab2c3ef1db3b9762a255eb49cc95e0852ad637",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SECTOID"
+    },
+    "splat03_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_splat03_orm.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat03_orm.png",
+      "sha256": "dcc8b4d91ec7d1c8ec1ff0d69acfa4d7f90c88020b2d624777a98e8d397a25ac",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SECTOID"
+    },
+    "pool_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_pool_albedo.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_pool_albedo.png",
+      "sha256": "3eacdadaf0305f062144d83127e9583736afa4d6cc47b5d4c29b13dc856c800c",
+      "colorspace": "sRGB",
+      "shared_with": "units/SECTOID"
+    },
+    "pool_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_pool_normal.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_pool_normal.png",
+      "sha256": "d82144de4f4bdda47102ee9c1ded7d7a8d0a56f0b784eaa8f70c5a9bcdbbc438",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SECTOID"
+    },
+    "pool_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/sectoid_opus-v1_blood_pool_orm.png",
+      "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_pool_orm.png",
+      "sha256": "4fbb7ad9317f1461b6d9c1f1c57ee58efc8b1381ad7582c0d47ff9b6e7c7d46b",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SECTOID"
+    },
+    "wound01a_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound01a_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound01a_albedo.png",
+      "sha256": "9eb556c05732afc2ca3b439794c62e4e8b4e1f4737f35a07998a239defedbc17",
+      "colorspace": "sRGB"
+    },
+    "wound01a_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound01a_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound01a_normal.png",
+      "sha256": "097b9c28ec1c81f8035978d5cb53be511dbdfaa42810adee44ba85658ff449ad",
+      "colorspace": "Non-Color"
+    },
+    "wound01a_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound01a_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound01a_orm.png",
+      "sha256": "c13ffc1f9977bb7b3701554d7099eb0734bf2b6f658616f8710b0a3d3a000df2",
+      "colorspace": "Non-Color"
+    },
+    "wound01b_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound01b_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound01b_albedo.png",
+      "sha256": "87e872f0ffc5ae4875aefa93814918e565061f2bb1e83b9eec8548124cf3d3b0",
+      "colorspace": "sRGB"
+    },
+    "wound01b_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound01b_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound01b_normal.png",
+      "sha256": "18f26cc7184c55eb4bafc1d686c309b4a3b7584781362acfc3d82059c4c68b97",
+      "colorspace": "Non-Color"
+    },
+    "wound01b_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound01b_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound01b_orm.png",
+      "sha256": "391ef0230f202e3b51dee71623cf04f1ac42e645826a858d4c05243f5694e4ed",
+      "colorspace": "Non-Color"
+    },
+    "wound01c_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound01c_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound01c_albedo.png",
+      "sha256": "0cd15d2b848dabb1f6e1aea198c40fad1b4c098d88719fe56e76465f9c55d075",
+      "colorspace": "sRGB"
+    },
+    "wound01c_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound01c_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound01c_normal.png",
+      "sha256": "8286695e43775e5ada14b97664dc95e02c4576497b9f96db8c99fb9a873c8d91",
+      "colorspace": "Non-Color"
+    },
+    "wound01c_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound01c_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound01c_orm.png",
+      "sha256": "bfb1fe8e413634097bccb1a30af63fa3b3e86acb6ad50a60adc8e0654aaee4a9",
+      "colorspace": "Non-Color"
+    },
+    "wound02a_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound02a_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound02a_albedo.png",
+      "sha256": "682c83cc62f73b247454d16a1c14acca051ef12006916998987125255f43d238",
+      "colorspace": "sRGB"
+    },
+    "wound02a_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound02a_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound02a_normal.png",
+      "sha256": "62fc533fc0b9746b04172f842e5089286d9d6fd8838d6c55888a56c401e710a0",
+      "colorspace": "Non-Color"
+    },
+    "wound02a_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound02a_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound02a_orm.png",
+      "sha256": "4bd497c8ef3bfb2cd712912ac30aaad9a8906824fa9bfe04fbc03c68d6db5059",
+      "colorspace": "Non-Color"
+    },
+    "wound02b_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound02b_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound02b_albedo.png",
+      "sha256": "54c416828b633c29280a663996519b1f758882e1eda006c1164cb88c0ba1617f",
+      "colorspace": "sRGB"
+    },
+    "wound02b_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound02b_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound02b_normal.png",
+      "sha256": "14bfae13bcd7bdadd1761f64a79ee907de563ec8f5796d0465ca48fb9851b189",
+      "colorspace": "Non-Color"
+    },
+    "wound02b_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound02b_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound02b_orm.png",
+      "sha256": "083a9d94e8d6077f71263e5105aa497e0ebbf5de89b4df8cd387bbaf7771fd6e",
+      "colorspace": "Non-Color"
+    },
+    "wound02c_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound02c_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound02c_albedo.png",
+      "sha256": "044a0d9b900c53fe8e2733e9f0c959c29e84cf8098348d573bd2d3def7fbd370",
+      "colorspace": "sRGB"
+    },
+    "wound02c_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound02c_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound02c_normal.png",
+      "sha256": "3964f3c0a71d2aea7022c078cdfab855de385f867a72921dabe6dfafc4452103",
+      "colorspace": "Non-Color"
+    },
+    "wound02c_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound02c_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound02c_orm.png",
+      "sha256": "c7deca354e62a2bc49a83ac69fdb2b3403cfbc0c1c0b518ecbab033f4e3bc3ec",
+      "colorspace": "Non-Color"
+    },
+    "wound03a_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound03a_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound03a_albedo.png",
+      "sha256": "e212d38887aa2326e7aae633b73bc5be7c180ea82ada34cad2f7d7b30d5ac3f8",
+      "colorspace": "sRGB"
+    },
+    "wound03a_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound03a_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound03a_normal.png",
+      "sha256": "0ec9d7c8aa6656beb6d5356a005a60011317eb0e91bbf5cf1768ea2324f9adb9",
+      "colorspace": "Non-Color"
+    },
+    "wound03a_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound03a_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound03a_orm.png",
+      "sha256": "ef427885e9d97d8048cf157c3a782d4b99ac01adc9aa29601cd4853af313d8ce",
+      "colorspace": "Non-Color"
+    },
+    "wound03b_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound03b_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound03b_albedo.png",
+      "sha256": "0e280d0cb92ee3a78563560bc860882f6a89f0b8cb25ffde7ee57a6d82e2645a",
+      "colorspace": "sRGB"
+    },
+    "wound03b_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound03b_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound03b_normal.png",
+      "sha256": "6ce98243d92dee581bb2b0e71b9e6903ebcd132e82f4cadb59cf842787874157",
+      "colorspace": "Non-Color"
+    },
+    "wound03b_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound03b_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound03b_orm.png",
+      "sha256": "8d1d9d9b51fc94efbd7b36b5c3ba53b302a6b535d4b94afffc20178975441c70",
+      "colorspace": "Non-Color"
+    },
+    "wound03c_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound03c_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound03c_albedo.png",
+      "sha256": "528c696238d2ae4bb57a349b41358768a309d3626f4b11ad694380ebb925f33d",
+      "colorspace": "sRGB"
+    },
+    "wound03c_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound03c_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound03c_normal.png",
+      "sha256": "2f1c93a7ac05082d7568507c2ffcab27404cdb455975e18f2dc2492b7b610731",
+      "colorspace": "Non-Color"
+    },
+    "wound03c_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound03c_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound03c_orm.png",
+      "sha256": "5861d8ba7558225e8822a17ffe673a229fff2a56f2b4d81205c78106d038f9d4",
+      "colorspace": "Non-Color"
+    },
+    "wound04a_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound04a_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound04a_albedo.png",
+      "sha256": "dce9a0f73d1b55774f817f275263c57c50d1e9178d30f6b291232f504ea9f103",
+      "colorspace": "sRGB"
+    },
+    "wound04a_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound04a_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound04a_normal.png",
+      "sha256": "4dd56ce3f4086e5e878191406385b7f2e0f3ee9d23ee71ffff1cc64d1004c75d",
+      "colorspace": "Non-Color"
+    },
+    "wound04a_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound04a_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound04a_orm.png",
+      "sha256": "4f717b32ec4274a39333ed073d480f5a8bea8986257da2af79ae8d8f3544971d",
+      "colorspace": "Non-Color"
+    },
+    "wound04b_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound04b_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound04b_albedo.png",
+      "sha256": "f5166c5092d5c707bfed2bf601270242724012df5d3047e175848fe45eb6608d",
+      "colorspace": "sRGB"
+    },
+    "wound04b_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound04b_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound04b_normal.png",
+      "sha256": "c73317a336f44aeed6eeaaa2f9eeddcee0e7621add597620255dfe8eed2e361f",
+      "colorspace": "Non-Color"
+    },
+    "wound04b_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound04b_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound04b_orm.png",
+      "sha256": "a79a142237b3d6703d10e0079834fc761223bfa5c44c749bb6c820b6ce78a0d6",
+      "colorspace": "Non-Color"
+    },
+    "wound04c_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound04c_albedo.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound04c_albedo.png",
+      "sha256": "c4eddefdc1af207bf851712843181242276f43f77de2bd29dc30577210da8edf",
+      "colorspace": "sRGB"
+    },
+    "wound04c_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound04c_normal.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound04c_normal.png",
+      "sha256": "be15d5195dc27ebb5593702055300831ce5b5f4f788dd9237a1478623b51d7f3",
+      "colorspace": "Non-Color"
+    },
+    "wound04c_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/floater_opus-v2_wound04c_orm.png",
+      "uri_from_model": "../../../textures/units/floater_opus-v2_wound04c_orm.png",
+      "sha256": "84bf0528b48ba8257960f8b35b4036386b80ebbfc872f46618d0f9a9117ef8bd",
+      "colorspace": "Non-Color"
+    },
+    "drip01_f00_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_f00_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f00_albedo.png",
+      "sha256": "a79e8e5deb004c68cc6a47916e90acbbd45dff796f34996f5f4082039f99e39f",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip01_f01_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_f01_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f01_albedo.png",
+      "sha256": "e5166392fd89f3fe81735848310a0093f06741be54234e58c9744b75dd00e72b",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip01_f02_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_f02_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f02_albedo.png",
+      "sha256": "f557f318232fef3cf79e6b838a802a6b41ef9e4b23ff3fad0b7970239d36dc25",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip01_f03_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_f03_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f03_albedo.png",
+      "sha256": "296565b8624918467b1a019f2887c49db062886bd4caa6bf7e36a4531af659d0",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip01_f04_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_f04_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f04_albedo.png",
+      "sha256": "554f99806f1000898a9b031dcc55e5c8d3d45e2e8794439c30b499037db19338",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip01_f05_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_f05_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f05_albedo.png",
+      "sha256": "f4b522671ab680a7dd284a5ca79b059ec05e930b5c70e5a914fb543781f83138",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip01_f06_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_f06_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f06_albedo.png",
+      "sha256": "620b360a10586dc2e9fdd16dfcef47905322b20166ff6a98eb332ddd3f08fe03",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip01_f07_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_f07_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f07_albedo.png",
+      "sha256": "f0a43b3135bb36fe28eb868cfd771a416b87a5b71c22eaa3ee7139f56ccc0411",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip01_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_normal.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_normal.png",
+      "sha256": "f2be9e38882cf48468fa862d6cc2a435d82ff77be4c3ee24993c225c6c9e92f9",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip01_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip01_orm.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_orm.png",
+      "sha256": "dbea2ba997360a643022104a5ffe41ed711d2428dc1307ceecd7161f051c5e70",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_f00_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_f00_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f00_albedo.png",
+      "sha256": "056efe6bb7bcf796646b4f80a5a5b61dc00fe5e9f95fd46d9d25b459c110a2ee",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_f01_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_f01_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f01_albedo.png",
+      "sha256": "2df89115a8ab7755b14c4123abb1ddf911d03fc4735ffd4cd5af419586a3a22f",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_f02_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_f02_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f02_albedo.png",
+      "sha256": "49c48b41b17fc683c1f87392d174962dfabd704da2eacd3ec9aef7f8a0b47869",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_f03_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_f03_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f03_albedo.png",
+      "sha256": "8073c854d72342f10d0851e526b9e9f1d1ab619648d154ee7f0b2f4d11e0a749",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_f04_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_f04_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f04_albedo.png",
+      "sha256": "549fa7f3224e4320a5cbaed22e7ca13c1cdb38ac44d1daa5f659cdce84f7bd6b",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_f05_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_f05_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f05_albedo.png",
+      "sha256": "865d898f0182c09fd68d558d9b402caa1981d475e386f180d1afda746fb97328",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_f06_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_f06_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f06_albedo.png",
+      "sha256": "8b235e71f4d5dd6020b2df9dcb35a49e1d5d53d79aca3dbc22dcab23f0be71d3",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_f07_albedo": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_f07_albedo.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f07_albedo.png",
+      "sha256": "d4c1ebec895a660241cb43aa1158a605bea3732c1f4a078e79b747f24d176907",
+      "colorspace": "sRGB",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_normal": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_normal.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_normal.png",
+      "sha256": "229a11768cabf6a776512147b53e799660dd9b163048e0b6a5c97983c1287860",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    },
+    "drip02_orm": {
+      "path": "xcom-3d-godot/x-com--ufo-defense-3d/assets/textures/units/snakeman_opus-v1_drip02_orm.png",
+      "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_orm.png",
+      "sha256": "3fe005ea54ee6f5dbd26d24c448d58c745b5b233fc9dadcd83df2bfb0e6f1d2d",
+      "colorspace": "Non-Color",
+      "shared_with": "units/SNAKEMAN opus-v1..v3, SECTOID opus-v4, FLOATER opus-v2"
+    }
+  },
+  "wound_decals": {
+    "textures": [
+      "wound01",
+      "wound02",
+      "wound03",
+      "wound04"
+    ],
+    "info": {
+      "wound01": {
+        "description": "round compact hole, tight spatter ring",
+        "hole_center_uv": [
+          0.5,
+          0.5
+        ],
+        "streak_dir_uv": null,
+        "coverage_alpha_gt_half": 0.082,
+        "atlas_quadrant": 0,
+        "crop_px_in_atlas": 708
+      },
+      "wound02": {
+        "description": "grazing shot: hole with spatter streaked to +U (image right)",
+        "hole_center_uv": [
+          0.5,
+          0.5
+        ],
+        "streak_dir_uv": [
+          1.0,
+          0.12
+        ],
+        "coverage_alpha_gt_half": 0.064,
+        "atlas_quadrant": 1,
+        "crop_px_in_atlas": 912
+      },
+      "wound03": {
+        "description": "large torn burst wound, heavy spatter (lethal hits)",
+        "hole_center_uv": [
+          0.5,
+          0.5
+        ],
+        "streak_dir_uv": null,
+        "coverage_alpha_gt_half": 0.215,
+        "atlas_quadrant": 2,
+        "crop_px_in_atlas": 704
+      },
+      "wound04": {
+        "description": "small puncture, sparse droplets",
+        "hole_center_uv": [
+          0.5,
+          0.5
+        ],
+        "streak_dir_uv": null,
+        "coverage_alpha_gt_half": 0.119,
+        "atlas_quadrant": 3,
+        "crop_px_in_atlas": 436
+      }
+    },
+    "size_m": {
+      "wound01": 0.36,
+      "wound02": 0.4,
+      "wound03": 0.44,
+      "wound04": 0.34
+    },
+    "projection_depth_m": 0.12,
+    "max_per_unit": 6,
+    "normal_fade": 0.5,
+    "upper_fade": 0.2,
+    "lower_fade": 0.2,
+    "albedo_mix": 1.0,
+    "modulate": "blood colour (per_unit_parameter)",
+    "choice": "lethal hit -> wound03; grazing hit (angle between the shot and the inward surface normal > 50 deg) -> wound02 with its +U streak along the shot tangent; otherwise wound01 / wound04 at random",
+    "placement": "ray-cast the shot (travel direction) against the unit (the skinned mesh or the ragdoll profile shapes posed on the skeleton) -> hit point, surface normal, bone (largest skin weight at the hit). Decal centre = hit point; projection (decal -Y) = normalize(shot - normal) (half-way between the shot and the inward normal, so grazing hits smear a little without stretching); decal +X = the shot tangent on the surface; parent: a BoneAttachment3D on that bone under the unit Skeleton3D, so the decal follows the body through the hit reaction, the death clip and the ragdoll",
+    "cull_mask": "only the unit's own visual layer (VisualInstance3D.layers of its meshes): never the floor or other units (give each unit its own layer, or at least never the floor layer)",
+    "stacking": "each hit adds a decal; beyond max_per_unit the oldest is removed",
+    "spray": "the hit spray starts on the visible skin at the hit point (nudged 4 mm out along the normal) and flies BACK toward the shooter out of the entry wound: direction = normalize(-shot travel + surface normal), the sidecar spray.runtime cone (user correction 2026-10-02)",
+    "source": "wound shapes: Snakeman opus-v1 tint-neutral wound textures (Codex image_gen wound_decals_gen_v1, AI-generated, provenance in art/team/units_opus55/textures/snakeman_v01/gen) upscaled to 512 px with the entry holes added per species; drips shared by hash (blood_runs_gen_v1)",
+    "drips": {
+      "sets": {
+        "drip01": {
+          "frames": [
+            "drip01_f00_albedo",
+            "drip01_f01_albedo",
+            "drip01_f02_albedo",
+            "drip01_f03_albedo",
+            "drip01_f04_albedo",
+            "drip01_f05_albedo",
+            "drip01_f06_albedo",
+            "drip01_f07_albedo"
+          ],
+          "normal": "drip01_normal",
+          "orm": "drip01_orm",
+          "coverage_alpha_gt_half_full": 0.344
+        },
+        "drip02": {
+          "frames": [
+            "drip02_f00_albedo",
+            "drip02_f01_albedo",
+            "drip02_f02_albedo",
+            "drip02_f03_albedo",
+            "drip02_f04_albedo",
+            "drip02_f05_albedo",
+            "drip02_f06_albedo",
+            "drip02_f07_albedo"
+          ],
+          "normal": "drip02_normal",
+          "orm": "drip02_orm",
+          "coverage_alpha_gt_half_full": 0.284
+        }
+      },
+      "size_m": [
+        0.28,
+        0.76
+      ],
+      "projection_depth_m": 0.14,
+      "normal_fade": 0.5,
+      "texture_axes": "U across the runs; V down the runs (texture top = the impact point). Godot Decal: U = local +X, V = local +Z, so local +Z = the run direction and the decal centre sits half its length below the hit",
+      "direction": "world down at the moment of the hit, projected onto the surface plane at the hit point; frozen in the hit bone frame afterwards (the runs move and fall with the body, they do not re-orient)",
+      "skip_if_projected_down_below": 0.25,
+      "skip_note": "hits on near-horizontal surfaces (top of the head / shoulders, the underside) get no runs",
+      "grow_s": 1.5,
+      "grow_ease": "out (fast at first, slowing)",
+      "frames": 8,
+      "animation": "swap texture_albedo through the reveal frames over grow_s (normal / ORM fixed: Godot masks them with the albedo alpha)",
+      "top_offset_m": 0.01,
+      "source": "Codex image_gen blood_runs_gen_v1.png (AI-generated, provenance sidecar), masked here"
+    },
+    "size_note": "Floater 2.35 m: a little larger than the Snakeman set (0.30-0.40 m / 0.26 x 0.70 m) and at least the size of the opus-v1 UV0 chest wound overlay",
+    "variants": {
+      "wound01": [
+        "wound01a",
+        "wound01b",
+        "wound01c"
+      ],
+      "wound02": [
+        "wound02a",
+        "wound02b",
+        "wound02c"
+      ],
+      "wound03": [
+        "wound03a",
+        "wound03b",
+        "wound03c"
+      ],
+      "wound04": [
+        "wound04a",
+        "wound04b",
+        "wound04c"
+      ]
+    },
+    "random_roll": {
+      "enabled": true,
+      "except": [
+        "wound02"
+      ],
+      "rule": "per hit pick one hole variant of the chosen wound type at random and roll the decal by a random angle about the surface normal (not the grazing wound02, whose streak follows the shot)"
+    },
+    "entry_hole": {
+      "hole_relative_value": 0.4,
+      "blood_value": 0.7059,
+      "hole_texture_luminance_srgb": 0.4,
+      "hole_result_srgb": "#392046",
+      "hole_result_value": 0.2732,
+      "hole_value_of_blood_value": 0.387,
+      "hole_diameter_of_main_blob": 0.21,
+      "res_px": 512,
+      "note": "ragged entry hole at the decal centre (= the hit point; the spray root sits on it), user feedback 2026-10-02 (second pass): a DARK SHADE OF THE SPECIES BLOOD COLOUR (~35 % of its value, hue and saturation kept; the darkest part of the wound), ~21.0 % of the main blood blob, graded into the wet ring, roughness .04 in the hole and .06 in a wet zone around it, a shallow normal dimple with a torn lip (s6b_wound_holes.py)"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/snakeman_v2/snakeman_v2_lab_main.gd" id="1"]
+
+[node name="SnakemanV2Lab" type="Node3D"]
+script = ExtResource("1")

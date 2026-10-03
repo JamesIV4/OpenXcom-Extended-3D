@@ -1,0 +1,3826 @@
+{
+ "schema": "opus55.ragdoll.v1",
+ "asset_id": "units/MUTON",
+ "rig": "MPFB game_engine (53 bones) + weapon_r socket",
+ "godot_target": "Godot 4.7 PhysicalBoneSimulator3D + PhysicalBone3D children of the Skeleton3D",
+ "conventions": {
+  "space": "body_offset / joint_offset are Transform3D in the bone-local frame of the imported Skeleton3D bone (Blender bone frame, +Y along the bone)",
+  "basis_columns": "Godot Basis(x_axis, y_axis, z_axis)",
+  "capsule_axis": "local Y (CapsuleShape3D default); height = total incl. caps",
+  "hinge_axis": "joint frame Z; engine hinge angle = -(right-hand rotation of the child about Z) as in Bullet/GodotPhysics/Jolt-in-Godot; Z is set so the angle equals the stated meaning (knee/elbow flexion, ankle dorsiflexion positive)",
+  "cone_twist_axis": "joint frame X",
+  "limits": "degrees, relative to the bind pose (joints are created at rest)",
+  "world_check": "rest_check_glTF_world = glTF/Godot scene metres"
+ },
+ "total_mass_kg": 180.0,
+ "mass_assumption": "2.14 m, very muscular Muton (180 kg, health 125); small hooded head at 6.5%; chest 40 / waist 24 kg; arm chain tapering upper 8.0 / fore 5.5 / hand 2.2 kg (heavier than volume, against flicking; a hand heavier than its forearm twitched); the rest by fitted volume; floor 0.35 kg per body",
+ "simulated_bones": [
+  "pelvis",
+  "spine_02",
+  "spine_03",
+  "head",
+  "upperarm_l",
+  "lowerarm_l",
+  "hand_l",
+  "upperarm_r",
+  "lowerarm_r",
+  "hand_r",
+  "thigh_l",
+  "calf_l",
+  "foot_l",
+  "thigh_r",
+  "calf_r",
+  "foot_r"
+ ],
+ "non_simulated": "Root, spine_01, neck_01, clavicles, digits, toes and weapon_r follow their simulated parent with their animated local pose (at bind on the hand-off frame)",
+ "collision_exceptions": [
+  [
+   "thigh_l",
+   "thigh_r"
+  ]
+ ],
+ "kept_collisions_note": "pelvis / spine_03 collide on purpose (lab: removing it let the spine fold and settle worse)",
+ "bones": [
+  {
+   "bone": "pelvis",
+   "parent_physical_bone": null,
+   "mass_kg": 14.409,
+   "shape": {
+    "type": "box",
+    "size": [
+     0.42,
+     0.2916,
+     0.3462
+    ]
+   },
+   "body_offset": {
+    "origin": [
+     -0.0019,
+     0.025,
+     -0.0504
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "none",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 1.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     0.0,
+     1.22503,
+     -0.00863
+    ],
+    "shape_center": [
+     -0.0019,
+     1.2661,
+     -0.04708
+    ]
+   }
+  },
+  {
+   "bone": "spine_02",
+   "parent_physical_bone": "pelvis",
+   "mass_kg": 24.0,
+   "shape": {
+    "type": "box",
+    "size": [
+     0.444,
+     0.2252,
+     0.3038
+    ]
+   },
+   "body_offset": {
+    "origin": [
+     -0.0019,
+     0.0551,
+     -0.0953
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "cone",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 3.0,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     -0.0,
+     1.40809,
+     0.01969
+    ],
+    "shape_center": [
+     -0.0019,
+     1.47535,
+     -0.06746
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     0.0019,
+     -0.0551,
+     0.0953
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    1.570796,
+    1.570796,
+    -0.0
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "swing_span": 25,
+    "twist_span": 15,
+    "bias": 0.3,
+    "softness": 0.8,
+    "relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "twist_axis": "joint frame X = bone +Y (bind direction)"
+  },
+  {
+   "bone": "spine_03",
+   "parent_physical_bone": "spine_02",
+   "mass_kg": 40.0,
+   "shape": {
+    "type": "box",
+    "size": [
+     0.732,
+     0.4545,
+     0.4045
+    ]
+   },
+   "body_offset": {
+    "origin": [
+     -0.0019,
+     0.2324,
+     -0.1251
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "cone",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 2.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     -0.0,
+     1.48479,
+     0.02996
+    ],
+    "shape_center": [
+     -0.0019,
+     1.73416,
+     -0.05649
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     0.0019,
+     -0.2324,
+     0.1251
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    1.570796,
+    1.570796,
+    -0.0
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "swing_span": 22,
+    "twist_span": 15,
+    "bias": 0.3,
+    "softness": 0.8,
+    "relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "twist_axis": "joint frame X = bone +Y (bind direction)"
+  },
+  {
+   "bone": "head",
+   "parent_physical_bone": "spine_03",
+   "mass_kg": 11.7,
+   "shape": {
+    "type": "sphere",
+    "radius": 0.1643
+   },
+   "body_offset": {
+    "origin": [
+     0.0003,
+     -0.0072,
+     -0.0116
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "cone",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.2,
+   "angular_damp": 3.0,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     0.0,
+     1.99029,
+     -0.0688
+    ],
+    "shape_center": [
+     0.0003,
+     1.98313,
+     -0.08043
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     -0.0003,
+     0.0072,
+     0.0116
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    1.570796,
+    1.570796,
+    -0.0
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "swing_span": 40,
+    "twist_span": 45,
+    "bias": 0.3,
+    "softness": 0.8,
+    "relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "twist_axis": "joint frame X = bone +Y (bind direction)"
+  },
+  {
+   "bone": "upperarm_l",
+   "parent_physical_bone": "spine_03",
+   "mass_kg": 8.0,
+   "shape": {
+    "type": "capsule",
+    "radius": 0.1593,
+    "height": 0.4892,
+    "axis": "body local Y (= bone Y)"
+   },
+   "body_offset": {
+    "origin": [
+     0.0304,
+     0.1269,
+     -0.0018
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "cone",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.1,
+   "angular_damp": 1.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     -0.40588,
+     1.79928,
+     -0.06178
+    ],
+    "shape_center": [
+     -0.49351,
+     1.70778,
+     -0.03048
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     -0.0304,
+     -0.1269,
+     0.0018
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    1.570796,
+    1.570796,
+    -0.0
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "swing_span": 85,
+    "twist_span": 50,
+    "bias": 0.3,
+    "softness": 0.8,
+    "relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "twist_axis": "joint frame X = bone +Y (bind direction)"
+  },
+  {
+   "bone": "lowerarm_l",
+   "parent_physical_bone": "upperarm_l",
+   "mass_kg": 5.5,
+   "shape": {
+    "type": "capsule",
+    "radius": 0.1329,
+    "height": 0.375,
+    "axis": "body local Y (= bone Y)"
+   },
+   "body_offset": {
+    "origin": [
+     -0.0029,
+     0.1566,
+     -0.001
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "hinge",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 2.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     -0.63705,
+     1.5433,
+     -0.05886
+    ],
+    "shape_center": [
+     -0.71578,
+     1.47009,
+     -0.17276
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     0.0029,
+     -0.1566,
+     0.001
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     [
+      0.99959,
+      0.0,
+      0.028645
+     ],
+     [
+      0.028645,
+      -0.0,
+      -0.99959
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    3.112944,
+    -0.0,
+    1.570796
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     [
+      0.99959,
+      0.0,
+      0.028645
+     ],
+     [
+      0.028645,
+      -0.0,
+      -0.99959
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "angular_limit_enabled": true,
+    "angular_limit_lower": -49.27,
+    "angular_limit_upper": 98.73,
+    "angular_limit_bias": 0.3,
+    "angular_limit_softness": 0.9,
+    "angular_limit_relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "meaning": "positive = more elbow flexion; bind pose already flexed 46.3 deg",
+   "axis_world_blender": [
+    0.7397000193595886,
+    0.07339999824762344,
+    -0.6689000129699707
+   ]
+  },
+  {
+   "bone": "hand_l",
+   "parent_physical_bone": "lowerarm_l",
+   "mass_kg": 2.2,
+   "shape": {
+    "type": "box",
+    "size": [
+     0.3215,
+     0.3212,
+     0.1304
+    ]
+   },
+   "body_offset": {
+    "origin": [
+     -0.0184,
+     0.16,
+     0.025
+    ],
+    "basis_columns": [
+     [
+      -0.350754,
+      -0.583796,
+      -0.732225
+     ],
+     [
+      -0.39335,
+      0.801426,
+      -0.450545
+     ],
+     [
+      0.849851,
+      0.12999,
+      -0.51074
+     ]
+    ]
+   },
+   "joint_type": "cone",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.2,
+   "angular_damp": 5.0,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     -0.81509,
+     1.37395,
+     -0.30999
+    ],
+    "shape_center": [
+     -0.8601,
+     1.27684,
+     -0.43291
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     0.10526,
+     -0.1242,
+     0.00761
+    ],
+    "basis_columns": [
+     [
+      -0.583796,
+      0.801426,
+      0.12999
+     ],
+     [
+      -0.732225,
+      -0.450545,
+      -0.51074
+     ],
+     [
+      -0.350754,
+      -0.39335,
+      0.849851
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    -0.536045,
+    -0.15178,
+    2.122397
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "swing_span": 60,
+    "twist_span": 25,
+    "bias": 0.3,
+    "softness": 0.8,
+    "relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "twist_axis": "joint frame X = bone +Y (bind direction)"
+  },
+  {
+   "bone": "upperarm_r",
+   "parent_physical_bone": "spine_03",
+   "mass_kg": 8.0,
+   "shape": {
+    "type": "capsule",
+    "radius": 0.1595,
+    "height": 0.4917,
+    "axis": "body local Y (= bone Y)"
+   },
+   "body_offset": {
+    "origin": [
+     -0.0306,
+     0.1263,
+     -0.002
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "cone",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.1,
+   "angular_damp": 1.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     0.40588,
+     1.79928,
+     -0.06178
+    ],
+    "shape_center": [
+     0.49326,
+     1.70837,
+     -0.0303
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     0.0306,
+     -0.1263,
+     0.002
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    1.570796,
+    1.570796,
+    -0.0
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "swing_span": 85,
+    "twist_span": 50,
+    "bias": 0.3,
+    "softness": 0.8,
+    "relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "twist_axis": "joint frame X = bone +Y (bind direction)"
+  },
+  {
+   "bone": "lowerarm_r",
+   "parent_physical_bone": "upperarm_r",
+   "mass_kg": 5.5,
+   "shape": {
+    "type": "capsule",
+    "radius": 0.1332,
+    "height": 0.3759,
+    "axis": "body local Y (= bone Y)"
+   },
+   "body_offset": {
+    "origin": [
+     0.0029,
+     0.1558,
+     -0.0021
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "hinge",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 2.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     0.63705,
+     1.5433,
+     -0.05886
+    ],
+    "shape_center": [
+     0.71618,
+     1.47123,
+     -0.17213
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     -0.0029,
+     -0.1558,
+     0.0021
+    ],
+    "basis_columns": [
+     [
+      -0.0,
+      1.0,
+      -1e-06
+     ],
+     [
+      -0.99959,
+      0.0,
+      0.028646
+     ],
+     [
+      0.028646,
+      1e-06,
+      0.99959
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    0.02865,
+    1e-06,
+    1.570796
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      -0.0,
+      1.0,
+      -1e-06
+     ],
+     [
+      -0.99959,
+      0.0,
+      0.028646
+     ],
+     [
+      0.028646,
+      1e-06,
+      0.99959
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "angular_limit_enabled": true,
+    "angular_limit_lower": -49.27,
+    "angular_limit_upper": 98.73,
+    "angular_limit_bias": 0.3,
+    "angular_limit_softness": 0.9,
+    "angular_limit_relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "meaning": "positive = more elbow flexion; bind pose already flexed 46.3 deg",
+   "axis_world_blender": [
+    0.7397000193595886,
+    -0.07339999824762344,
+    0.6689000129699707
+   ]
+  },
+  {
+   "bone": "hand_r",
+   "parent_physical_bone": "lowerarm_r",
+   "mass_kg": 2.2,
+   "shape": {
+    "type": "box",
+    "size": [
+     0.3213,
+     0.3214,
+     0.1303
+    ]
+   },
+   "body_offset": {
+    "origin": [
+     0.0183,
+     0.16,
+     0.025
+    ],
+    "basis_columns": [
+     [
+      0.352167,
+      -0.582198,
+      -0.73282
+     ],
+     [
+      0.392907,
+      0.802608,
+      -0.448825
+     ],
+     [
+      0.849472,
+      -0.129869,
+      0.511401
+     ]
+    ]
+   },
+   "joint_type": "cone",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.2,
+   "angular_damp": 5.0,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     0.81509,
+     1.37395,
+     -0.30999
+    ],
+    "shape_center": [
+     0.86019,
+     1.27688,
+     -0.43289
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     0.10503,
+     -0.12439,
+     -0.00755
+    ],
+    "basis_columns": [
+     [
+      -0.582198,
+      0.802608,
+      -0.129869
+     ],
+     [
+      -0.73282,
+      -0.448825,
+      0.511401
+     ],
+     [
+      0.352167,
+      0.392907,
+      0.849472
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    0.536814,
+    0.151707,
+    2.120329
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "swing_span": 60,
+    "twist_span": 25,
+    "bias": 0.3,
+    "softness": 0.8,
+    "relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "twist_axis": "joint frame X = bone +Y (bind direction)"
+  },
+  {
+   "bone": "thigh_l",
+   "parent_physical_bone": "pelvis",
+   "mass_kg": 18.909,
+   "shape": {
+    "type": "capsule",
+    "radius": 0.2051,
+    "height": 0.5212,
+    "axis": "body local Y (= bone Y)"
+   },
+   "body_offset": {
+    "origin": [
+     0.0404,
+     0.2745,
+     0.0177
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "cone",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 1.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     -0.15964,
+     1.21692,
+     0.0055
+    ],
+    "shape_center": [
+     -0.1614,
+     0.94554,
+     -0.05489
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     -0.0404,
+     -0.2745,
+     -0.0177
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    1.570796,
+    1.570796,
+    -0.0
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "swing_span": 75,
+    "twist_span": 25,
+    "bias": 0.3,
+    "softness": 0.8,
+    "relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "twist_axis": "joint frame X = bone +Y (bind direction)"
+  },
+  {
+   "bone": "calf_l",
+   "parent_physical_bone": "thigh_l",
+   "mass_kg": 8.403,
+   "shape": {
+    "type": "capsule",
+    "radius": 0.1138,
+    "height": 0.5496,
+    "axis": "body local Y (= bone Y)"
+   },
+   "body_offset": {
+    "origin": [
+     -0.0238,
+     0.2644,
+     -0.0351
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "hinge",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 1.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     -0.20581,
+     0.67273,
+     -0.03805
+    ],
+    "shape_center": [
+     -0.25152,
+     0.41298,
+     0.00827
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     0.0238,
+     -0.2644,
+     0.0351
+    ],
+    "basis_columns": [
+     [
+      0.110194,
+      0.993638,
+      -0.023263
+     ],
+     [
+      0.206554,
+      0.0,
+      0.978435
+     ],
+     [
+      0.97221,
+      -0.112623,
+      -0.20524
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    1.778848,
+    -0.112862,
+    1.570796
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.110194,
+      0.993638,
+      -0.023263
+     ],
+     [
+      0.206554,
+      0.0,
+      0.978435
+     ],
+     [
+      0.97221,
+      -0.112623,
+      -0.20524
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "angular_limit_enabled": true,
+    "angular_limit_lower": -8.31,
+    "angular_limit_upper": 133.69,
+    "angular_limit_bias": 0.3,
+    "angular_limit_softness": 0.9,
+    "angular_limit_relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "meaning": "positive = knee flexion; bind flexion 6.3 deg",
+   "axis_world_blender": [
+    -1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "bone": "foot_l",
+   "parent_physical_bone": "calf_l",
+   "mass_kg": 1.91,
+   "shape": {
+    "type": "box",
+    "size": [
+     0.1845,
+     0.4,
+     0.1476
+    ]
+   },
+   "body_offset": {
+    "origin": [
+     -0.0069,
+     0.1062,
+     0.0118
+    ],
+    "basis_columns": [
+     [
+      0.995611,
+      -0.019347,
+      -0.09157
+     ],
+     [
+      0.058256,
+      0.893859,
+      0.444547
+     ],
+     [
+      0.07325,
+      -0.44793,
+      0.891063
+     ]
+    ]
+   },
+   "joint_type": "hinge",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 1.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     -0.26942,
+     0.11164,
+     -0.02282
+    ],
+    "shape_center": [
+     -0.27943,
+     0.07408,
+     -0.12259
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     0.01,
+     -0.09977,
+     0.03756
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      0.894026,
+      -0.448014
+     ],
+     [
+      0.0,
+      -0.448014,
+      -0.894027
+     ],
+     [
+      -1.0,
+      0.0,
+      -0.0
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    -2.035339,
+    -1.570796,
+    0.0
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.019266,
+      0.999813,
+      -0.001772
+     ],
+     [
+      -0.091587,
+      0.0,
+      -0.995797
+     ],
+     [
+      -0.995611,
+      0.019347,
+      0.09157
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "angular_limit_enabled": true,
+    "angular_limit_lower": -40.0,
+    "angular_limit_upper": 25.0,
+    "angular_limit_bias": 0.3,
+    "angular_limit_softness": 0.9,
+    "angular_limit_relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "meaning": "positive = dorsiflexion (toes up), negative = plantar flexion",
+   "axis_world_blender": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "bone": "thigh_r",
+   "parent_physical_bone": "pelvis",
+   "mass_kg": 18.909,
+   "shape": {
+    "type": "capsule",
+    "radius": 0.2051,
+    "height": 0.5213,
+    "axis": "body local Y (= bone Y)"
+   },
+   "body_offset": {
+    "origin": [
+     -0.0404,
+     0.2746,
+     0.0175
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "cone",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 1.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     0.15964,
+     1.21692,
+     0.0055
+    ],
+    "shape_center": [
+     0.16129,
+     0.94542,
+     -0.05474
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     0.0404,
+     -0.2746,
+     -0.0175
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    1.570796,
+    1.570796,
+    -0.0
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "swing_span": 75,
+    "twist_span": 25,
+    "bias": 0.3,
+    "softness": 0.8,
+    "relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "twist_axis": "joint frame X = bone +Y (bind direction)"
+  },
+  {
+   "bone": "calf_r",
+   "parent_physical_bone": "thigh_r",
+   "mass_kg": 8.439,
+   "shape": {
+    "type": "capsule",
+    "radius": 0.1139,
+    "height": 0.5488,
+    "axis": "body local Y (= bone Y)"
+   },
+   "body_offset": {
+    "origin": [
+     0.0238,
+     0.2639,
+     -0.0352
+    ],
+    "basis_columns": [
+     [
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ]
+   },
+   "joint_type": "hinge",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 1.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     0.20581,
+     0.67273,
+     -0.03805
+    ],
+    "shape_center": [
+     0.25144,
+     0.41348,
+     0.00836
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     -0.0238,
+     -0.2639,
+     0.0352
+    ],
+    "basis_columns": [
+     [
+      -0.110194,
+      0.993638,
+      -0.023263
+     ],
+     [
+      -0.206554,
+      0.0,
+      0.978435
+     ],
+     [
+      0.97221,
+      0.112623,
+      0.20524
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    1.362745,
+    0.112862,
+    1.570796
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      -0.110194,
+      0.993638,
+      -0.023263
+     ],
+     [
+      -0.206554,
+      0.0,
+      0.978435
+     ],
+     [
+      0.97221,
+      0.112623,
+      0.20524
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "angular_limit_enabled": true,
+    "angular_limit_lower": -8.31,
+    "angular_limit_upper": 133.69,
+    "angular_limit_bias": 0.3,
+    "angular_limit_softness": 0.9,
+    "angular_limit_relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "meaning": "positive = knee flexion; bind flexion 6.3 deg",
+   "axis_world_blender": [
+    -1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "bone": "foot_r",
+   "parent_physical_bone": "calf_r",
+   "mass_kg": 1.922,
+   "shape": {
+    "type": "box",
+    "size": [
+     0.1845,
+     0.4001,
+     0.1456
+    ]
+   },
+   "body_offset": {
+    "origin": [
+     0.007,
+     0.1067,
+     0.0109
+    ],
+    "basis_columns": [
+     [
+      0.995611,
+      0.019347,
+      0.09157
+     ],
+     [
+      -0.058257,
+      0.893859,
+      0.444547
+     ],
+     [
+      -0.07325,
+      -0.44793,
+      0.891062
+     ]
+    ]
+   },
+   "joint_type": "hinge",
+   "friction": 0.8,
+   "bounce": 0.0,
+   "linear_damp": 0.15,
+   "angular_damp": 1.5,
+   "rest_check_glTF_world": {
+    "bone_head": [
+     0.26942,
+     0.11164,
+     -0.02282
+    ],
+    "shape_center": [
+     0.27946,
+     0.07304,
+     -0.12263
+    ]
+   },
+   "joint_offset": {
+    "origin": [
+     -0.01003,
+     -0.09981,
+     0.03859
+    ],
+    "basis_columns": [
+     [
+      -0.0,
+      0.894026,
+      -0.448014
+     ],
+     [
+      -0.0,
+      -0.448014,
+      -0.894026
+     ],
+     [
+      -1.0,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "joint_rotation_euler_yxz_rad": [
+    -2.03534,
+    -1.570797,
+    -0.0
+   ],
+   "joint_frame_in_bone_local": {
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "basis_columns": [
+     [
+      -0.019266,
+      0.999813,
+      -0.001772
+     ],
+     [
+      0.091587,
+      0.0,
+      -0.995797
+     ],
+     [
+      -0.995611,
+      -0.019347,
+      -0.09157
+     ]
+    ]
+   },
+   "joint_constraints": {
+    "angular_limit_enabled": true,
+    "angular_limit_lower": -40.0,
+    "angular_limit_upper": 25.0,
+    "angular_limit_bias": 0.3,
+    "angular_limit_softness": 0.9,
+    "angular_limit_relaxation": 1.0
+   },
+   "joint_anchor": "bone head (bone-local origin)",
+   "meaning": "positive = dorsiflexion (toes up), negative = plantar flexion",
+   "axis_world_blender": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "footprint_rule": {
+  "rule": "User decision 2026-10-01: no containment box or tile walls; gentle push only (overhang into the next tile accepted, 2026-10-02). Drop tests report how far anything ends outside the 2 m x 2 m tile as tuning information.",
+  "tile_m": [
+   2.0,
+   2.0
+  ],
+  "origin": "tile centre on the walking surface (unit origin)",
+  "game_logic": "If the game moves the body (e.g. no floor -> lower level), that is game logic, not physics."
+ },
+ "handoff": {
+  "clip": "DeathFront",
+  "frame": 4,
+  "fps": 30,
+  "initial_velocity": "continue the clip: per-bone linear/angular velocity from the last two frames of the variant",
+  "initial_velocities_unit_local": {
+   "pelvis": {
+    "linear_mps": [
+     0.0,
+     -0.094,
+     0.309
+    ],
+    "angular_radps": [
+     0.838,
+     0.0,
+     0.0
+    ]
+   },
+   "spine_02": {
+    "linear_mps": [
+     0.0,
+     -0.089,
+     0.489
+    ],
+    "angular_radps": [
+     1.219,
+     0.0,
+     0.0
+    ]
+   },
+   "spine_03": {
+    "linear_mps": [
+     0.0,
+     -0.244,
+     1.018
+    ],
+    "angular_radps": [
+     2.094,
+     0.0,
+     0.0
+    ]
+   },
+   "head": {
+    "linear_mps": [
+     0.0,
+     -0.396,
+     1.509
+    ],
+    "angular_radps": [
+     2.448,
+     0.0,
+     0.0
+    ]
+   },
+   "upperarm_l": {
+    "linear_mps": [
+     -0.071,
+     -0.376,
+     1.223
+    ],
+    "angular_radps": [
+     -2.521,
+     2.363,
+     0.239
+    ]
+   },
+   "lowerarm_l": {
+    "linear_mps": [
+     -0.818,
+     0.742,
+     1.007
+    ],
+    "angular_radps": [
+     -4.008,
+     0.664,
+     -3.551
+    ]
+   },
+   "hand_l": {
+    "linear_mps": [
+     -2.086,
+     2.15,
+     0.147
+    ],
+    "angular_radps": [
+     4.302,
+     -2.34,
+     -4.264
+    ]
+   },
+   "upperarm_r": {
+    "linear_mps": [
+     0.07,
+     -0.377,
+     1.223
+    ],
+    "angular_radps": [
+     -2.521,
+     -2.363,
+     -0.239
+    ]
+   },
+   "lowerarm_r": {
+    "linear_mps": [
+     0.813,
+     0.741,
+     1.011
+    ],
+    "angular_radps": [
+     -4.008,
+     -0.664,
+     3.551
+    ]
+   },
+   "hand_r": {
+    "linear_mps": [
+     2.086,
+     2.15,
+     0.147
+    ],
+    "angular_radps": [
+     -4.313,
+     -2.335,
+     4.256
+    ]
+   },
+   "thigh_l": {
+    "linear_mps": [
+     -0.02,
+     -0.042,
+     0.054
+    ],
+    "angular_radps": [
+     0.683,
+     0.14,
+     0.424
+    ]
+   },
+   "calf_l": {
+    "linear_mps": [
+     -0.014,
+     0.003,
+     -0.085
+    ],
+    "angular_radps": [
+     -0.295,
+     0.153,
+     -0.003
+    ]
+   },
+   "foot_l": {
+    "linear_mps": [
+     0.0,
+     -0.0,
+     -0.0
+    ],
+    "angular_radps": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "thigh_r": {
+    "linear_mps": [
+     0.02,
+     -0.042,
+     0.054
+    ],
+    "angular_radps": [
+     0.683,
+     -0.14,
+     -0.424
+    ]
+   },
+   "calf_r": {
+    "linear_mps": [
+     0.014,
+     0.003,
+     -0.085
+    ],
+    "angular_radps": [
+     -0.295,
+     -0.153,
+     0.003
+    ]
+   },
+   "foot_r": {
+    "linear_mps": [
+     0.0,
+     -0.0,
+     -0.0
+    ],
+    "angular_radps": [
+     -0.0,
+     0.0,
+     -0.0
+    ]
+   }
+  },
+  "variants": {
+   "Front": {
+    "clip": "DeathFront",
+    "frame": 4,
+    "initial_velocities_unit_local": {
+     "pelvis": {
+      "linear_mps": [
+       0.0,
+       -0.094,
+       0.309
+      ],
+      "angular_radps": [
+       0.838,
+       0.0,
+       0.0
+      ]
+     },
+     "spine_02": {
+      "linear_mps": [
+       0.0,
+       -0.089,
+       0.489
+      ],
+      "angular_radps": [
+       1.219,
+       0.0,
+       0.0
+      ]
+     },
+     "spine_03": {
+      "linear_mps": [
+       0.0,
+       -0.244,
+       1.018
+      ],
+      "angular_radps": [
+       2.094,
+       0.0,
+       0.0
+      ]
+     },
+     "head": {
+      "linear_mps": [
+       0.0,
+       -0.396,
+       1.509
+      ],
+      "angular_radps": [
+       2.448,
+       0.0,
+       0.0
+      ]
+     },
+     "upperarm_l": {
+      "linear_mps": [
+       -0.071,
+       -0.376,
+       1.223
+      ],
+      "angular_radps": [
+       -2.521,
+       2.363,
+       0.239
+      ]
+     },
+     "lowerarm_l": {
+      "linear_mps": [
+       -0.818,
+       0.742,
+       1.007
+      ],
+      "angular_radps": [
+       -4.008,
+       0.664,
+       -3.551
+      ]
+     },
+     "hand_l": {
+      "linear_mps": [
+       -2.086,
+       2.15,
+       0.147
+      ],
+      "angular_radps": [
+       4.302,
+       -2.34,
+       -4.264
+      ]
+     },
+     "upperarm_r": {
+      "linear_mps": [
+       0.07,
+       -0.377,
+       1.223
+      ],
+      "angular_radps": [
+       -2.521,
+       -2.363,
+       -0.239
+      ]
+     },
+     "lowerarm_r": {
+      "linear_mps": [
+       0.813,
+       0.741,
+       1.011
+      ],
+      "angular_radps": [
+       -4.008,
+       -0.664,
+       3.551
+      ]
+     },
+     "hand_r": {
+      "linear_mps": [
+       2.086,
+       2.15,
+       0.147
+      ],
+      "angular_radps": [
+       -4.313,
+       -2.335,
+       4.256
+      ]
+     },
+     "thigh_l": {
+      "linear_mps": [
+       -0.02,
+       -0.042,
+       0.054
+      ],
+      "angular_radps": [
+       0.683,
+       0.14,
+       0.424
+      ]
+     },
+     "calf_l": {
+      "linear_mps": [
+       -0.014,
+       0.003,
+       -0.085
+      ],
+      "angular_radps": [
+       -0.295,
+       0.153,
+       -0.003
+      ]
+     },
+     "foot_l": {
+      "linear_mps": [
+       0.0,
+       -0.0,
+       -0.0
+      ],
+      "angular_radps": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "thigh_r": {
+      "linear_mps": [
+       0.02,
+       -0.042,
+       0.054
+      ],
+      "angular_radps": [
+       0.683,
+       -0.14,
+       -0.424
+      ]
+     },
+     "calf_r": {
+      "linear_mps": [
+       0.014,
+       0.003,
+       -0.085
+      ],
+      "angular_radps": [
+       -0.295,
+       -0.153,
+       0.003
+      ]
+     },
+     "foot_r": {
+      "linear_mps": [
+       0.0,
+       -0.0,
+       -0.0
+      ],
+      "angular_radps": [
+       -0.0,
+       0.0,
+       -0.0
+      ]
+     }
+    },
+    "shot_travel_unit_xy": [
+     0,
+     -1
+    ]
+   },
+   "Back": {
+    "clip": "DeathBack",
+    "frame": 4,
+    "initial_velocities_unit_local": {
+     "pelvis": {
+      "linear_mps": [
+       0.0,
+       -0.157,
+       -0.299
+      ],
+      "angular_radps": [
+       -0.838,
+       -0.0,
+       -0.0
+      ]
+     },
+     "spine_02": {
+      "linear_mps": [
+       0.0,
+       -0.234,
+       -0.438
+      ],
+      "angular_radps": [
+       -1.219,
+       -0.0,
+       -0.0
+      ]
+     },
+     "spine_03": {
+      "linear_mps": [
+       0.0,
+       -0.494,
+       -0.893
+      ],
+      "angular_radps": [
+       -2.094,
+       -0.0,
+       -0.0
+      ]
+     },
+     "head": {
+      "linear_mps": [
+       0.0,
+       -0.736,
+       -1.338
+      ],
+      "angular_radps": [
+       -2.448,
+       -0.0,
+       -0.0
+      ]
+     },
+     "upperarm_l": {
+      "linear_mps": [
+       -0.158,
+       -0.617,
+       -1.113
+      ],
+      "angular_radps": [
+       -2.063,
+       -2.016,
+       0.106
+      ]
+     },
+     "lowerarm_l": {
+      "linear_mps": [
+       -0.553,
+       0.075,
+       -1.433
+      ],
+      "angular_radps": [
+       -2.917,
+       -2.423,
+       -1.163
+      ]
+     },
+     "hand_l": {
+      "linear_mps": [
+       -1.17,
+       1.033,
+       -1.934
+      ],
+      "angular_radps": [
+       1.169,
+       0.369,
+       -4.716
+      ]
+     },
+     "upperarm_r": {
+      "linear_mps": [
+       0.157,
+       -0.617,
+       -1.113
+      ],
+      "angular_radps": [
+       -2.063,
+       2.016,
+       -0.106
+      ]
+     },
+     "lowerarm_r": {
+      "linear_mps": [
+       0.549,
+       0.076,
+       -1.432
+      ],
+      "angular_radps": [
+       -2.917,
+       2.423,
+       1.163
+      ]
+     },
+     "hand_r": {
+      "linear_mps": [
+       1.17,
+       1.033,
+       -1.934
+      ],
+      "angular_radps": [
+       -1.178,
+       0.371,
+       4.713
+      ]
+     },
+     "thigh_l": {
+      "linear_mps": [
+       -0.019,
+       -0.083,
+       -0.34
+      ],
+      "angular_radps": [
+       0.289,
+       -0.107,
+       0.095
+      ]
+     },
+     "calf_l": {
+      "linear_mps": [
+       -0.025,
+       -0.012,
+       -0.23
+      ],
+      "angular_radps": [
+       -0.757,
+       -0.063,
+       -0.084
+      ]
+     },
+     "foot_l": {
+      "linear_mps": [
+       0.0,
+       -0.0,
+       0.0
+      ],
+      "angular_radps": [
+       -0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "thigh_r": {
+      "linear_mps": [
+       0.019,
+       -0.083,
+       -0.34
+      ],
+      "angular_radps": [
+       0.289,
+       0.107,
+       -0.095
+      ]
+     },
+     "calf_r": {
+      "linear_mps": [
+       0.025,
+       -0.012,
+       -0.231
+      ],
+      "angular_radps": [
+       -0.757,
+       0.063,
+       0.084
+      ]
+     },
+     "foot_r": {
+      "linear_mps": [
+       0.0,
+       -0.0,
+       0.0
+      ],
+      "angular_radps": [
+       -0.0,
+       0.0,
+       -0.0
+      ]
+     }
+    },
+    "shot_travel_unit_xy": [
+     0,
+     1
+    ]
+   },
+   "Left": {
+    "clip": "DeathLeft",
+    "frame": 4,
+    "initial_velocities_unit_local": {
+     "pelvis": {
+      "linear_mps": [
+       0.284,
+       -0.123,
+       -0.003
+      ],
+      "angular_radps": [
+       -0.059,
+       -0.832,
+       -0.132
+      ]
+     },
+     "spine_02": {
+      "linear_mps": [
+       0.428,
+       -0.143,
+       -0.024
+      ],
+      "angular_radps": [
+       0.016,
+       -1.042,
+       -0.13
+      ]
+     },
+     "spine_03": {
+      "linear_mps": [
+       0.867,
+       -0.273,
+       0.019
+      ],
+      "angular_radps": [
+       0.15,
+       -1.634,
+       0.345
+      ]
+     },
+     "head": {
+      "linear_mps": [
+       1.262,
+       -0.403,
+       0.063
+      ],
+      "angular_radps": [
+       0.22,
+       -2.092,
+       0.274
+      ]
+     },
+     "upperarm_l": {
+      "linear_mps": [
+       0.956,
+       0.338,
+       -0.006
+      ],
+      "angular_radps": [
+       -2.846,
+       0.272,
+       0.05
+      ]
+     },
+     "lowerarm_l": {
+      "linear_mps": [
+       0.37,
+       1.555,
+       -0.391
+      ],
+      "angular_radps": [
+       -4.531,
+       -0.995,
+       -2.563
+      ]
+     },
+     "hand_l": {
+      "linear_mps": [
+       -0.643,
+       3.211,
+       -1.185
+      ],
+      "angular_radps": [
+       3.974,
+       -0.363,
+       -5.887
+      ]
+     },
+     "upperarm_r": {
+      "linear_mps": [
+       0.716,
+       -1.133,
+       0.099
+      ],
+      "angular_radps": [
+       -0.97,
+       0.006,
+       -0.444
+      ]
+     },
+     "lowerarm_r": {
+      "linear_mps": [
+       1.162,
+       -0.683,
+       -0.033
+      ],
+      "angular_radps": [
+       -2.604,
+       0.323,
+       1.567
+      ]
+     },
+     "hand_r": {
+      "linear_mps": [
+       1.87,
+       -0.029,
+       -0.552
+      ],
+      "angular_radps": [
+       -1.735,
+       -0.891,
+       2.544
+      ]
+     },
+     "thigh_l": {
+      "linear_mps": [
+       0.209,
+       0.012,
+       0.043
+      ],
+      "angular_radps": [
+       0.212,
+       0.347,
+       -0.151
+      ]
+     },
+     "calf_l": {
+      "linear_mps": [
+       0.103,
+       0.037,
+       0.024
+      ],
+      "angular_radps": [
+       0.125,
+       0.361,
+       -0.23
+      ]
+     },
+     "foot_l": {
+      "linear_mps": [
+       0.014,
+       0.052,
+       0.003
+      ],
+      "angular_radps": [
+       -0.0,
+       -0.0,
+       -0.0
+      ]
+     },
+     "thigh_r": {
+      "linear_mps": [
+       0.211,
+       -0.149,
+       -0.25
+      ],
+      "angular_radps": [
+       0.582,
+       0.188,
+       -0.491
+      ]
+     },
+     "calf_r": {
+      "linear_mps": [
+       0.112,
+       -0.036,
+       -0.257
+      ],
+      "angular_radps": [
+       -0.891,
+       0.252,
+       -0.179
+      ]
+     },
+     "foot_r": {
+      "linear_mps": [
+       0.0,
+       -0.0,
+       0.0
+      ],
+      "angular_radps": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "shot_travel_unit_xy": [
+     1,
+     0
+    ]
+   },
+   "Right": {
+    "clip": "DeathRight",
+    "frame": 4,
+    "initial_velocities_unit_local": {
+     "pelvis": {
+      "linear_mps": [
+       -0.283,
+       -0.126,
+       -0.004
+      ],
+      "angular_radps": [
+       -0.059,
+       0.832,
+       0.132
+      ]
+     },
+     "spine_02": {
+      "linear_mps": [
+       -0.427,
+       -0.146,
+       -0.025
+      ],
+      "angular_radps": [
+       0.016,
+       1.042,
+       0.13
+      ]
+     },
+     "spine_03": {
+      "linear_mps": [
+       -0.865,
+       -0.279,
+       0.02
+      ],
+      "angular_radps": [
+       0.15,
+       1.634,
+       -0.345
+      ]
+     },
+     "head": {
+      "linear_mps": [
+       -1.263,
+       -0.402,
+       0.063
+      ],
+      "angular_radps": [
+       0.22,
+       2.092,
+       -0.274
+      ]
+     },
+     "upperarm_l": {
+      "linear_mps": [
+       -0.717,
+       -1.132,
+       0.099
+      ],
+      "angular_radps": [
+       -0.97,
+       -0.006,
+       0.444
+      ]
+     },
+     "lowerarm_l": {
+      "linear_mps": [
+       -1.166,
+       -0.683,
+       -0.035
+      ],
+      "angular_radps": [
+       -2.604,
+       -0.323,
+       -1.567
+      ]
+     },
+     "hand_l": {
+      "linear_mps": [
+       -1.87,
+       -0.029,
+       -0.552
+      ],
+      "angular_radps": [
+       1.729,
+       -0.893,
+       -2.547
+      ]
+     },
+     "upperarm_r": {
+      "linear_mps": [
+       -0.957,
+       0.337,
+       -0.006
+      ],
+      "angular_radps": [
+       -2.846,
+       -0.272,
+       -0.05
+      ]
+     },
+     "lowerarm_r": {
+      "linear_mps": [
+       -0.376,
+       1.554,
+       -0.388
+      ],
+      "angular_radps": [
+       -4.531,
+       0.995,
+       2.563
+      ]
+     },
+     "hand_r": {
+      "linear_mps": [
+       0.643,
+       3.212,
+       -1.185
+      ],
+      "angular_radps": [
+       -3.987,
+       -0.358,
+       5.879
+      ]
+     },
+     "thigh_l": {
+      "linear_mps": [
+       -0.211,
+       -0.149,
+       -0.249
+      ],
+      "angular_radps": [
+       0.582,
+       -0.188,
+       0.491
+      ]
+     },
+     "calf_l": {
+      "linear_mps": [
+       -0.112,
+       -0.036,
+       -0.256
+      ],
+      "angular_radps": [
+       -0.891,
+       -0.252,
+       0.179
+      ]
+     },
+     "foot_l": {
+      "linear_mps": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "angular_radps": [
+       0.0,
+       -0.0,
+       -0.0
+      ]
+     },
+     "thigh_r": {
+      "linear_mps": [
+       -0.209,
+       0.012,
+       0.043
+      ],
+      "angular_radps": [
+       0.212,
+       -0.347,
+       0.151
+      ]
+     },
+     "calf_r": {
+      "linear_mps": [
+       -0.104,
+       0.037,
+       0.024
+      ],
+      "angular_radps": [
+       0.125,
+       -0.361,
+       0.23
+      ]
+     },
+     "foot_r": {
+      "linear_mps": [
+       -0.014,
+       0.052,
+       0.003
+      ],
+      "angular_radps": [
+       -0.0,
+       -0.0,
+       0.0
+      ]
+     }
+    },
+    "shot_travel_unit_xy": [
+     -1,
+     0
+    ]
+   }
+  },
+  "variant_rule": "shot travel direction t in the unit frame (x = unit right, y = unit forward; glTF/Godot: x right, -z forward): t.y <= -0.707 -> Front (shot from the front), t.y >= 0.707 -> Back, else t.x > 0 -> Left (shot from the unit's left), else Right. Play Death<variant>, hand off on its last frame with that variant's velocities. \"Death\" is a copy of DeathFront.",
+  "extra_push": {
+   "bone": "spine_03",
+   "bones": [
+    "pelvis",
+    "spine_02",
+    "spine_03",
+    "head",
+    "upperarm_l",
+    "lowerarm_l",
+    "hand_l",
+    "upperarm_r",
+    "lowerarm_r",
+    "hand_r",
+    "thigh_l",
+    "calf_l",
+    "foot_l",
+    "thigh_r",
+    "calf_r",
+    "foot_r"
+   ],
+   "delta_v_mps_unit_local": [
+    0.0,
+    0.0,
+    0.35
+   ],
+   "direction": "SHOT TRAVEL DIRECTION: apply delta_v (as impulse = delta_v x body mass) to every body in \"bones\" along the horizontal travel direction of the killing shot (shooter -> unit, world space), whatever the facing; the vector here only carries the magnitude"
+  },
+  "variation": {
+   "push_yaw_jitter_deg": 12.0,
+   "spin_jitter_radps": 0.3,
+   "spin_bone": "spine_03",
+   "note": "per death: rotate the push direction about the vertical by a uniform random angle in [-jitter, +jitter] and add a random vertical-axis spin of up to spin_jitter to spin_bone, so corpses differ; 0 disables"
+  },
+  "ground_clearance_lift_m": 0.002,
+  "ground_clearance_rule": "at the hand-off, if any collision shape is below the walking plane, lift all bodies by that depth + 2 mm before releasing them (a depenetration launch is worse)",
+  "turn_to_attacker": null,
+  "no_turn": "user decision 2026-10-02: no animated turn toward the attacker; the variant and the push handle the fall direction and the twist below turns the upper body toward the shooter as physics",
+  "twist_toward_shooter": {
+   "max_delta_angular_velocity_radps": 7.5,
+   "bodies": "all (every PhysicalBone3D, legs included)",
+   "axis": "world up (Godot +Y)",
+   "pivot": "mass centre of all bodies at the hand-off (horizontal position)",
+   "scale": "angle between the unit facing and the direction from the unit to the shooter / 180 deg: 0 for a frontal shot, 0.5 from the side, 1 from directly behind",
+   "sign": "toward the shooter: counter-clockwise seen from above (+Y) when the shooter is on the unit's left; from directly behind (within 1 deg) pick the side at random per death",
+   "apply": "at the hand-off, after the variant velocities and the push: w = up x (max x scale x sign); for EVERY body: angular_velocity += w; linear_velocity += w.cross(body_centre - pivot) with body_centre and pivot taken in the horizontal plane (a rigid rotation of the whole unit, so the joints are not strained and the push momentum is unchanged)",
+   "intent": "he tries to turn round too late while still being pushed away from the attack (user 2026-10-02)",
+   "contract": "user / root 2026-10-02: 3x the opus-v1 2.5 rad/s = 7.5 rad/s is the default; a unit may drop to a lower per-unit ceiling, never below 2x (5.0 rad/s), only if the Jolt mass-centre gate (the bodies' mass centre must move away from the shooter from the hit to the settle, all 8 directions) fails at 3x with the all-body push at its 0.6 m/s ceiling; the reason is recorded in per_unit_ceiling"
+  },
+  "fall_direction": "away from the shooter (along the shot travel direction)"
+ },
+ "settle_and_freeze": {
+  "linear_speed_mps": 0.05,
+  "angular_speed_radps": 0.25,
+  "hold_s": 0.3,
+  "time_cap_s": 3.0,
+  "assist": {
+   "after_s": 1.0,
+   "below_mps": 0.5,
+   "linear_damp": 1.0,
+   "angular_damp": 4.0,
+   "rule": "once the fall is over (simulation time >= after_s and every body slower than below_mps), raise the damping of every body to at least these values (Godot DAMP_MODE_REPLACE) so the residual contact jitter of the light limbs dies out (lab s3: an arm pinned between torso and floor kept rolling at ~1 rad/s into the 3 s cap); the Blender drop tests run without it"
+  },
+  "assist_late": {
+   "after_s": 2.0,
+   "below_mps": 0.3,
+   "linear_damp": 6.0,
+   "angular_damp": 16.0,
+   "rule": "shared runtime contract (root 2026-10-02): after the first assist, once simulation time >= after_s and every body is slower than below_mps (the corpse only creeps), raise every body's damping to at least these values so a slow topple or limb creep ends before the time cap"
+  },
+  "depenetration": {
+   "max_lift_m": 0.05,
+   "rule": "root 2026-10-02: at freeze, if the deepest skinned vertex is below the walking plane, lift the whole corpse by that depth (capped at max_lift_m) - no visible pop"
+  },
+  "action": "freeze: copy the simulated bone poses into the Skeleton3D pose and stop the simulation (static corpse)"
+ },
+ "fit": {
+  "voxel_m": 0.012,
+  "inside_voxels": 170006,
+  "mesh_volume_m3": 0.2938,
+  "odd_parity_columns_skipped": 0,
+  "neck_voxels_excluded_from_shapes": 1588,
+  "grow_m": {
+   "head_sphere_radius": 0.01,
+   "foot_box_heel_top": 0.01,
+   "foot_box_sides": 0.015,
+   "foot_box_toe": 0.02,
+   "foot_box_sole": 0.0,
+   "hand_box_per_side": 0.01,
+   "arm_capsule_radius": 0.003
+  }
+ },
+ "preflight": {
+  "rest_lowest_shape_z_m": 0.0002,
+  "handoff_lowest_shape_z_m": 0.0002,
+  "handoff_lowest_shape_z_by_variant_m": {
+   "Front": 0.0002,
+   "Back": 0.0002,
+   "Left": 0.0002,
+   "Right": 0.0003
+  },
+  "handoff_ground_clearance_lift_m": 0.002,
+  "non_simulated_bones_off_bind_at_handoff_deg": {},
+  "nonadjacent_overlaps_m": {
+   "thigh_l|thigh_r": {
+    "rest_m": -0.0969,
+    "handoff_m": -0.0608
+   }
+  },
+  "collision_exceptions": [
+   [
+    "thigh_l",
+    "thigh_r"
+   ]
+  ],
+  "kept_collisions": [
+   [
+    "pelvis",
+    "spine_03"
+   ]
+  ],
+  "handoff_joint_state": {
+   "Front:spine_02": {
+    "swing_deg": 7.5,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Front:spine_03": {
+    "swing_deg": 7.5,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Front:head": {
+    "swing_deg": 5.5,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Front:upperarm_l": {
+    "swing_deg": 40.3,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Front:lowerarm_l": {
+    "hinge_deg": -16.0,
+    "ok": true
+   },
+   "Front:hand_l": {
+    "swing_deg": 1.1,
+    "twist_deg": 0.1,
+    "ok": true
+   },
+   "Front:upperarm_r": {
+    "swing_deg": 40.3,
+    "twist_deg": 0.0,
+    "ok": true
+   },
+   "Front:lowerarm_r": {
+    "hinge_deg": -16.0,
+    "ok": true
+   },
+   "Front:hand_r": {
+    "swing_deg": 1.1,
+    "twist_deg": -0.1,
+    "ok": true
+   },
+   "Front:thigh_l": {
+    "swing_deg": 5.0,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Front:calf_l": {
+    "hinge_deg": 15.4,
+    "ok": true
+   },
+   "Front:foot_l": {
+    "hinge_deg": 4.4,
+    "ok": true
+   },
+   "Front:thigh_r": {
+    "swing_deg": 5.0,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Front:calf_r": {
+    "hinge_deg": 15.4,
+    "ok": true
+   },
+   "Front:foot_r": {
+    "hinge_deg": 4.4,
+    "ok": true
+   },
+   "Back:spine_02": {
+    "swing_deg": 7.5,
+    "twist_deg": 0.0,
+    "ok": true
+   },
+   "Back:spine_03": {
+    "swing_deg": 7.5,
+    "twist_deg": 0.0,
+    "ok": true
+   },
+   "Back:head": {
+    "swing_deg": 9.5,
+    "twist_deg": 0.0,
+    "ok": true
+   },
+   "Back:upperarm_l": {
+    "swing_deg": 26.3,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Back:lowerarm_l": {
+    "hinge_deg": -15.0,
+    "ok": true
+   },
+   "Back:hand_l": {
+    "swing_deg": 3.0,
+    "twist_deg": 0.4,
+    "ok": true
+   },
+   "Back:upperarm_r": {
+    "swing_deg": 26.3,
+    "twist_deg": 0.0,
+    "ok": true
+   },
+   "Back:lowerarm_r": {
+    "hinge_deg": -15.0,
+    "ok": true
+   },
+   "Back:hand_r": {
+    "swing_deg": 3.0,
+    "twist_deg": -0.4,
+    "ok": true
+   },
+   "Back:thigh_l": {
+    "swing_deg": 15.3,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Back:calf_l": {
+    "hinge_deg": 14.2,
+    "ok": true
+   },
+   "Back:foot_l": {
+    "hinge_deg": 9.9,
+    "ok": true
+   },
+   "Back:thigh_r": {
+    "swing_deg": 15.3,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Back:calf_r": {
+    "hinge_deg": 14.2,
+    "ok": true
+   },
+   "Back:foot_r": {
+    "hinge_deg": 9.9,
+    "ok": true
+   },
+   "Left:spine_02": {
+    "swing_deg": 5.3,
+    "twist_deg": -3.7,
+    "ok": true
+   },
+   "Left:spine_03": {
+    "swing_deg": 5.2,
+    "twist_deg": -3.8,
+    "ok": true
+   },
+   "Left:head": {
+    "swing_deg": 5.1,
+    "twist_deg": -3.0,
+    "ok": true
+   },
+   "Left:upperarm_l": {
+    "swing_deg": 6.6,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Left:lowerarm_l": {
+    "hinge_deg": -14.3,
+    "ok": true
+   },
+   "Left:hand_l": {
+    "swing_deg": 2.1,
+    "twist_deg": 0.3,
+    "ok": true
+   },
+   "Left:upperarm_r": {
+    "swing_deg": 18.7,
+    "twist_deg": 0.0,
+    "ok": true
+   },
+   "Left:lowerarm_r": {
+    "hinge_deg": -14.3,
+    "ok": true
+   },
+   "Left:hand_r": {
+    "swing_deg": 2.0,
+    "twist_deg": -0.3,
+    "ok": true
+   },
+   "Left:thigh_l": {
+    "swing_deg": 2.6,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Left:calf_l": {
+    "hinge_deg": -2.5,
+    "ok": true
+   },
+   "Left:foot_l": {
+    "hinge_deg": -2.5,
+    "ok": true
+   },
+   "Left:thigh_r": {
+    "swing_deg": 18.9,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Left:calf_r": {
+    "hinge_deg": 28.0,
+    "ok": true
+   },
+   "Left:foot_r": {
+    "hinge_deg": 14.8,
+    "ok": true
+   },
+   "Right:spine_02": {
+    "swing_deg": 5.3,
+    "twist_deg": 3.7,
+    "ok": true
+   },
+   "Right:spine_03": {
+    "swing_deg": 5.2,
+    "twist_deg": 3.8,
+    "ok": true
+   },
+   "Right:head": {
+    "swing_deg": 5.1,
+    "twist_deg": 3.0,
+    "ok": true
+   },
+   "Right:upperarm_l": {
+    "swing_deg": 18.7,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Right:lowerarm_l": {
+    "hinge_deg": -14.3,
+    "ok": true
+   },
+   "Right:hand_l": {
+    "swing_deg": 2.0,
+    "twist_deg": 0.3,
+    "ok": true
+   },
+   "Right:upperarm_r": {
+    "swing_deg": 6.6,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Right:lowerarm_r": {
+    "hinge_deg": -14.3,
+    "ok": true
+   },
+   "Right:hand_r": {
+    "swing_deg": 2.1,
+    "twist_deg": -0.3,
+    "ok": true
+   },
+   "Right:thigh_l": {
+    "swing_deg": 18.9,
+    "twist_deg": 0.0,
+    "ok": true
+   },
+   "Right:calf_l": {
+    "hinge_deg": 28.0,
+    "ok": true
+   },
+   "Right:foot_l": {
+    "hinge_deg": 14.8,
+    "ok": true
+   },
+   "Right:thigh_r": {
+    "swing_deg": 2.6,
+    "twist_deg": -0.0,
+    "ok": true
+   },
+   "Right:calf_r": {
+    "hinge_deg": -2.5,
+    "ok": true
+   },
+   "Right:foot_r": {
+    "hinge_deg": -2.5,
+    "ok": true
+   }
+  },
+  "all_handoff_joints_within_limits": true
+ },
+ "blender_drop_tests": {
+  "engine": "Blender 5.1 rigid body (Bullet), 30 fps x 20 substeps, 60 iterations, split impulse, cone joints approximated by GENERIC 6-DOF limits, margin 2 mm",
+  "push_mps": 0.35,
+  "twist_max_radps": 7.5,
+  "tests": {
+   "A_face0_fromN": {
+    "facing": 0,
+    "attack_dir_deg": 180,
+    "variant": "Front",
+    "twist_scale": 0.0,
+    "twist_radps": 0.0,
+    "chest_yaw_deg_first_0p5s": 0.3,
+    "chest_yaw_deg_total": -1.9,
+    "chest_turn_toward_shooter_deg": null,
+    "chest_turn_toward_shooter_deg_first_0p5s": null,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": 1.0,
+    "head_displacement_along_attack_m": 1.03,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     -0.013,
+     -1.03
+    ],
+    "head_final_z_m": 0.252,
+    "max_shape_outside_footprint_m": 0.6924,
+    "final_mesh_outside_m": 0.6161,
+    "max_body_speed_mps": 5.94,
+    "max_joint_separation_m": 0.0454,
+    "settled_s_after_handoff": 1.63,
+    "final_mesh_z_min": 0.0005,
+    "sinking_regions_below_1cm": {},
+    "seconds": 0.2
+   },
+   "A_face0_fromNE": {
+    "facing": 0,
+    "attack_dir_deg": 225,
+    "variant": "Front",
+    "twist_scale": -0.25,
+    "twist_radps": -1.875,
+    "chest_yaw_deg_first_0p5s": -32.0,
+    "chest_yaw_deg_total": -34.4,
+    "chest_turn_toward_shooter_deg": 34.4,
+    "chest_turn_toward_shooter_deg_first_0p5s": 32.0,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": 0.988,
+    "head_displacement_along_attack_m": 0.94,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     -0.413,
+     -0.915
+    ],
+    "head_final_z_m": 0.248,
+    "max_shape_outside_footprint_m": 1.0181,
+    "final_mesh_outside_m": 0.8808,
+    "max_body_speed_mps": 5.822,
+    "max_joint_separation_m": 0.0451,
+    "settled_s_after_handoff": 2.3,
+    "final_mesh_z_min": -0.0079,
+    "sinking_regions_below_1cm": {},
+    "seconds": 0.2
+   },
+   "A_face0_fromE": {
+    "facing": 0,
+    "attack_dir_deg": 270,
+    "variant": "Right",
+    "twist_scale": -0.5,
+    "twist_radps": -3.75,
+    "chest_yaw_deg_first_0p5s": -78.4,
+    "chest_yaw_deg_total": -70.3,
+    "chest_turn_toward_shooter_deg": 70.3,
+    "chest_turn_toward_shooter_deg_first_0p5s": 78.4,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": 0.805,
+    "head_displacement_along_attack_m": 1.502,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     -1.502,
+     0.565
+    ],
+    "head_final_z_m": 0.253,
+    "max_shape_outside_footprint_m": 1.6192,
+    "final_mesh_outside_m": 1.5574,
+    "max_body_speed_mps": 7.792,
+    "max_joint_separation_m": 0.0454,
+    "settled_s_after_handoff": 2.03,
+    "final_mesh_z_min": -0.0159,
+    "sinking_regions_below_1cm": {
+     "calf_r": 3
+    },
+    "seconds": 0.2
+   },
+   "A_face0_fromSE": {
+    "facing": 0,
+    "attack_dir_deg": 315,
+    "variant": "Back",
+    "twist_scale": -0.75,
+    "twist_radps": -5.625,
+    "chest_yaw_deg_first_0p5s": -93.4,
+    "chest_yaw_deg_total": -128.9,
+    "chest_turn_toward_shooter_deg": 128.9,
+    "chest_turn_toward_shooter_deg_first_0p5s": 93.4,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": -0.729,
+    "head_displacement_along_attack_m": 0.091,
+    "falls_away_from_attack": false,
+    "head_final_xy_m": [
+     1.047,
+     1.176
+    ],
+    "head_final_z_m": 0.57,
+    "max_shape_outside_footprint_m": 1.2682,
+    "final_mesh_outside_m": 1.2043,
+    "max_body_speed_mps": 7.094,
+    "max_joint_separation_m": 0.0417,
+    "settled_s_after_handoff": null,
+    "final_mesh_z_min": -0.0122,
+    "sinking_regions_below_1cm": {
+     "lowerarm_l": 1
+    },
+    "seconds": 0.2
+   },
+   "A_face0_fromS": {
+    "facing": 0,
+    "attack_dir_deg": 0,
+    "variant": "Back",
+    "twist_scale": 1.0,
+    "twist_radps": 7.5,
+    "chest_yaw_deg_first_0p5s": 110.5,
+    "chest_yaw_deg_total": 159.3,
+    "chest_turn_toward_shooter_deg": 159.3,
+    "chest_turn_toward_shooter_deg_first_0p5s": 110.5,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": -0.992,
+    "head_displacement_along_attack_m": -0.039,
+    "falls_away_from_attack": false,
+    "head_final_xy_m": [
+     -0.849,
+     -0.039
+    ],
+    "head_final_z_m": 0.175,
+    "max_shape_outside_footprint_m": 1.2332,
+    "final_mesh_outside_m": 1.169,
+    "max_body_speed_mps": 8.848,
+    "max_joint_separation_m": 0.0425,
+    "settled_s_after_handoff": 2.13,
+    "final_mesh_z_min": -0.013,
+    "sinking_regions_below_1cm": {
+     "spine_03": 16
+    },
+    "seconds": 0.2
+   },
+   "A_face0_fromSW": {
+    "facing": 0,
+    "attack_dir_deg": 45,
+    "variant": "Back",
+    "twist_scale": 0.75,
+    "twist_radps": 5.625,
+    "chest_yaw_deg_first_0p5s": 92.6,
+    "chest_yaw_deg_total": 127.4,
+    "chest_turn_toward_shooter_deg": 127.4,
+    "chest_turn_toward_shooter_deg_first_0p5s": 92.6,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": -0.759,
+    "head_displacement_along_attack_m": 0.166,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     -0.947,
+     1.182
+    ],
+    "head_final_z_m": 0.573,
+    "max_shape_outside_footprint_m": 1.0058,
+    "final_mesh_outside_m": 0.8219,
+    "max_body_speed_mps": 7.099,
+    "max_joint_separation_m": 0.0392,
+    "settled_s_after_handoff": null,
+    "final_mesh_z_min": 0.0072,
+    "sinking_regions_below_1cm": {},
+    "seconds": 0.2
+   },
+   "A_face0_fromW": {
+    "facing": 0,
+    "attack_dir_deg": 90,
+    "variant": "Left",
+    "twist_scale": 0.5,
+    "twist_radps": 3.75,
+    "chest_yaw_deg_first_0p5s": 78.2,
+    "chest_yaw_deg_total": 69.8,
+    "chest_turn_toward_shooter_deg": 69.8,
+    "chest_turn_toward_shooter_deg_first_0p5s": 78.2,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": 0.776,
+    "head_displacement_along_attack_m": 1.515,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     1.515,
+     0.519
+    ],
+    "head_final_z_m": 0.253,
+    "max_shape_outside_footprint_m": 1.6043,
+    "final_mesh_outside_m": 1.5604,
+    "max_body_speed_mps": 7.68,
+    "max_joint_separation_m": 0.0429,
+    "settled_s_after_handoff": 1.93,
+    "final_mesh_z_min": -0.0241,
+    "sinking_regions_below_1cm": {
+     "calf_l": 4
+    },
+    "seconds": 0.2
+   },
+   "A_face0_fromNW": {
+    "facing": 0,
+    "attack_dir_deg": 135,
+    "variant": "Front",
+    "twist_scale": 0.25,
+    "twist_radps": 1.875,
+    "chest_yaw_deg_first_0p5s": 32.2,
+    "chest_yaw_deg_total": 38.6,
+    "chest_turn_toward_shooter_deg": 38.6,
+    "chest_turn_toward_shooter_deg_first_0p5s": 32.2,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": 0.994,
+    "head_displacement_along_attack_m": 0.972,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     0.444,
+     -0.931
+    ],
+    "head_final_z_m": 0.252,
+    "max_shape_outside_footprint_m": 1.0505,
+    "final_mesh_outside_m": 0.9652,
+    "max_body_speed_mps": 5.828,
+    "max_joint_separation_m": 0.0528,
+    "settled_s_after_handoff": 1.93,
+    "final_mesh_z_min": 0.0,
+    "sinking_regions_below_1cm": {},
+    "seconds": 0.2
+   },
+   "F_face3_fromN": {
+    "facing": 3,
+    "attack_dir_deg": 180,
+    "variant": "Back",
+    "twist_scale": 0.75,
+    "twist_radps": 5.625,
+    "chest_yaw_deg_first_0p5s": 92.6,
+    "chest_yaw_deg_total": 120.8,
+    "chest_turn_toward_shooter_deg": 120.8,
+    "chest_turn_toward_shooter_deg_first_0p5s": 92.6,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": -0.694,
+    "head_displacement_along_attack_m": 0.154,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     1.533,
+     -0.154
+    ],
+    "head_final_z_m": 0.578,
+    "max_shape_outside_footprint_m": 1.3382,
+    "final_mesh_outside_m": 1.2832,
+    "max_body_speed_mps": 7.099,
+    "max_joint_separation_m": 0.0408,
+    "settled_s_after_handoff": null,
+    "final_mesh_z_min": 0.007,
+    "sinking_regions_below_1cm": {},
+    "seconds": 0.2
+   },
+   "F_face3_fromE": {
+    "facing": 3,
+    "attack_dir_deg": 270,
+    "variant": "Front",
+    "twist_scale": 0.25,
+    "twist_radps": 1.875,
+    "chest_yaw_deg_first_0p5s": 32.1,
+    "chest_yaw_deg_total": 36.3,
+    "chest_turn_toward_shooter_deg": 36.3,
+    "chest_turn_toward_shooter_deg_first_0p5s": 32.1,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": 0.985,
+    "head_displacement_along_attack_m": 0.935,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     -0.935,
+     0.35
+    ],
+    "head_final_z_m": 0.25,
+    "max_shape_outside_footprint_m": 0.5838,
+    "final_mesh_outside_m": 0.4657,
+    "max_body_speed_mps": 5.851,
+    "max_joint_separation_m": 0.0491,
+    "settled_s_after_handoff": 1.93,
+    "final_mesh_z_min": -0.0013,
+    "sinking_regions_below_1cm": {},
+    "seconds": 0.2
+   },
+   "F_face3_fromS": {
+    "facing": 3,
+    "attack_dir_deg": 0,
+    "variant": "Front",
+    "twist_scale": -0.25,
+    "twist_radps": -1.875,
+    "chest_yaw_deg_first_0p5s": -32.0,
+    "chest_yaw_deg_total": -33.4,
+    "chest_turn_toward_shooter_deg": 33.4,
+    "chest_turn_toward_shooter_deg_first_0p5s": 32.0,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": 0.989,
+    "head_displacement_along_attack_m": 0.951,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     -0.354,
+     0.951
+    ],
+    "head_final_z_m": 0.248,
+    "max_shape_outside_footprint_m": 0.583,
+    "final_mesh_outside_m": 0.4014,
+    "max_body_speed_mps": 5.825,
+    "max_joint_separation_m": 0.0453,
+    "settled_s_after_handoff": 2.6,
+    "final_mesh_z_min": -0.0083,
+    "sinking_regions_below_1cm": {},
+    "seconds": 0.2
+   },
+   "F_face3_fromW": {
+    "facing": 3,
+    "attack_dir_deg": 90,
+    "variant": "Back",
+    "twist_scale": -0.75,
+    "twist_radps": -5.625,
+    "chest_yaw_deg_first_0p5s": -93.3,
+    "chest_yaw_deg_total": -123.6,
+    "chest_turn_toward_shooter_deg": 123.6,
+    "chest_turn_toward_shooter_deg_first_0p5s": 93.3,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": -0.699,
+    "head_displacement_along_attack_m": 0.118,
+    "falls_away_from_attack": false,
+    "head_final_xy_m": [
+     0.118,
+     -1.56
+    ],
+    "head_final_z_m": 0.584,
+    "max_shape_outside_footprint_m": 1.4818,
+    "final_mesh_outside_m": 1.3856,
+    "max_body_speed_mps": 7.094,
+    "max_joint_separation_m": 0.0402,
+    "settled_s_after_handoff": null,
+    "final_mesh_z_min": 0.0069,
+    "sinking_regions_below_1cm": {},
+    "seconds": 0.2
+   },
+   "V_face0_fromS_jit+12_spin+": {
+    "facing": 0,
+    "attack_dir_deg": 0,
+    "variant": "Back",
+    "twist_scale": 1.0,
+    "twist_radps": 7.5,
+    "chest_yaw_deg_first_0p5s": 109.9,
+    "chest_yaw_deg_total": 181.9,
+    "chest_turn_toward_shooter_deg": 181.9,
+    "chest_turn_toward_shooter_deg_first_0p5s": 109.9,
+    "push_yaw_jitter_deg": 12.0,
+    "spin_radps": 0.3,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": -0.987,
+    "head_displacement_along_attack_m": -0.004,
+    "falls_away_from_attack": false,
+    "head_final_xy_m": [
+     -0.534,
+     -0.004
+    ],
+    "head_final_z_m": 0.175,
+    "max_shape_outside_footprint_m": 1.2844,
+    "final_mesh_outside_m": 0.9456,
+    "max_body_speed_mps": 8.721,
+    "max_joint_separation_m": 0.001,
+    "settled_s_after_handoff": 2.37,
+    "final_mesh_z_min": -0.0129,
+    "sinking_regions_below_1cm": {
+     "spine_03": 18
+    },
+    "seconds": 0.2
+   },
+   "V_face0_fromE_jit-12_spin-": {
+    "facing": 0,
+    "attack_dir_deg": 270,
+    "variant": "Right",
+    "twist_scale": -0.5,
+    "twist_radps": -3.75,
+    "chest_yaw_deg_first_0p5s": -78.0,
+    "chest_yaw_deg_total": -61.4,
+    "chest_turn_toward_shooter_deg": 61.4,
+    "chest_turn_toward_shooter_deg_first_0p5s": 78.0,
+    "push_yaw_jitter_deg": -12.0,
+    "spin_radps": -0.3,
+    "start_offset_m": [
+     0.0,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": 0.885,
+    "head_displacement_along_attack_m": 1.664,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     -1.664,
+     0.317
+    ],
+    "head_final_z_m": 0.253,
+    "max_shape_outside_footprint_m": 1.7309,
+    "final_mesh_outside_m": 1.6348,
+    "max_body_speed_mps": 7.426,
+    "max_joint_separation_m": 0.0454,
+    "settled_s_after_handoff": 2.0,
+    "final_mesh_z_min": -0.0252,
+    "sinking_regions_below_1cm": {
+     "calf_r": 4
+    },
+    "seconds": 0.2
+   },
+   "C_face0_fromN_edge": {
+    "facing": 0,
+    "attack_dir_deg": 180,
+    "variant": "Front",
+    "twist_scale": 0.0,
+    "twist_radps": 0.0,
+    "chest_yaw_deg_first_0p5s": 0.0,
+    "chest_yaw_deg_total": 0.5,
+    "chest_turn_toward_shooter_deg": null,
+    "chest_turn_toward_shooter_deg_first_0p5s": null,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.0,
+     -0.45
+    ],
+    "fall_alignment_head_minus_pelvis": 1.0,
+    "head_displacement_along_attack_m": 0.966,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     -0.007,
+     -0.966
+    ],
+    "head_final_z_m": 0.25,
+    "max_shape_outside_footprint_m": 0.6084,
+    "final_mesh_outside_m": 0.5332,
+    "max_body_speed_mps": 5.929,
+    "max_joint_separation_m": 0.0457,
+    "settled_s_after_handoff": 2.2,
+    "final_mesh_z_min": 0.0019,
+    "sinking_regions_below_1cm": {},
+    "seconds": 0.2
+   },
+   "C_face0_fromW_corner": {
+    "facing": 0,
+    "attack_dir_deg": 90,
+    "variant": "Left",
+    "twist_scale": 0.5,
+    "twist_radps": 3.75,
+    "chest_yaw_deg_first_0p5s": 78.3,
+    "chest_yaw_deg_total": 76.6,
+    "chest_turn_toward_shooter_deg": 76.6,
+    "chest_turn_toward_shooter_deg_first_0p5s": 78.3,
+    "push_yaw_jitter_deg": 0.0,
+    "spin_radps": 0.0,
+    "start_offset_m": [
+     0.45,
+     0.0
+    ],
+    "fall_alignment_head_minus_pelvis": 0.752,
+    "head_displacement_along_attack_m": 1.476,
+    "falls_away_from_attack": true,
+    "head_final_xy_m": [
+     1.476,
+     0.557
+    ],
+    "head_final_z_m": 0.252,
+    "max_shape_outside_footprint_m": 1.6025,
+    "final_mesh_outside_m": 1.5629,
+    "max_body_speed_mps": 7.747,
+    "max_joint_separation_m": 0.0452,
+    "settled_s_after_handoff": 1.93,
+    "final_mesh_z_min": -0.0123,
+    "sinking_regions_below_1cm": {
+     "calf_l": 2
+    },
+    "seconds": 0.2
+   }
+  },
+  "all_fall_away_from_attack": false,
+  "max_final_mesh_outside_m": 1.6348
+ },
+ "model": "MUTON.opus-v1.gltf"
+}

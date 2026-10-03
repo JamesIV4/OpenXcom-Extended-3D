@@ -1,0 +1,524 @@
+{
+ "species": "SNAKEMAN",
+ "source": "SNAKEMAN.PCK death frames 96-98 (green pixels, battlescape palette indices 72-76)",
+ "palette_srgb": {
+  "thin": "#487c18",
+  "light": "#387014",
+  "base": "#306811",
+  "mid": "#28600c",
+  "dark": "#1c5408",
+  "thick": "#083400"
+ },
+ "palette_linear": {
+  "thin": [
+   0.0648,
+   0.20156,
+   0.00913
+  ],
+  "light": [
+   0.03955,
+   0.16203,
+   0.007
+  ],
+  "base": [
+   0.02956,
+   0.13843,
+   0.00561
+  ],
+  "mid": [
+   0.02122,
+   0.11697,
+   0.00368
+  ],
+  "dark": [
+   0.01161,
+   0.08866,
+   0.00243
+  ],
+  "thick": [
+   0.00243,
+   0.03434,
+   0.0
+  ]
+ },
+ "per_unit_parameter": {
+  "blood_color_srgb": "#306811",
+  "blood_color_linear": [
+   0.02956,
+   0.13843,
+   0.00561
+  ],
+  "note": "Textures are tint-neutral (RGB thickness luminance, A coverage); multiply by this colour. Splatter / pool shapes and the spray flipbook are shared with the Sectoid set."
+ },
+ "material": {
+  "godot": "StandardMaterial3D",
+  "albedo_color_srgb": "#306811",
+  "roughness": 0.12,
+  "metallic": 0.0,
+  "specular": 0.6,
+  "clearcoat": 0.4,
+  "clearcoat_roughness": 0.1,
+  "note": "wet, slightly glossy film; decals use the ORM maps (roughness .08 thick .. .30 thin)"
+ },
+ "wound_decals": {
+  "textures": [
+   "wound01",
+   "wound02",
+   "wound03",
+   "wound04"
+  ],
+  "info": {
+   "wound01": {
+    "description": "round compact hole, tight spatter ring",
+    "hole_center_uv": [
+     0.5,
+     0.5
+    ],
+    "streak_dir_uv": null,
+    "coverage_alpha_gt_half": 0.082,
+    "atlas_quadrant": 0,
+    "crop_px_in_atlas": 708
+   },
+   "wound02": {
+    "description": "grazing shot: hole with spatter streaked to +U (image right)",
+    "hole_center_uv": [
+     0.5,
+     0.5
+    ],
+    "streak_dir_uv": [
+     1.0,
+     0.12
+    ],
+    "coverage_alpha_gt_half": 0.064,
+    "atlas_quadrant": 1,
+    "crop_px_in_atlas": 912
+   },
+   "wound03": {
+    "description": "large torn burst wound, heavy spatter (lethal hits)",
+    "hole_center_uv": [
+     0.5,
+     0.5
+    ],
+    "streak_dir_uv": null,
+    "coverage_alpha_gt_half": 0.215,
+    "atlas_quadrant": 2,
+    "crop_px_in_atlas": 704
+   },
+   "wound04": {
+    "description": "small puncture, sparse droplets",
+    "hole_center_uv": [
+     0.5,
+     0.5
+    ],
+    "streak_dir_uv": null,
+    "coverage_alpha_gt_half": 0.119,
+    "atlas_quadrant": 3,
+    "crop_px_in_atlas": 436
+   }
+  },
+  "size_m": {
+   "wound01": 0.34,
+   "wound02": 0.38,
+   "wound03": 0.4,
+   "wound04": 0.3
+  },
+  "projection_depth_m": 0.12,
+  "max_per_unit": 6,
+  "normal_fade": 0.5,
+  "upper_fade": 0.2,
+  "lower_fade": 0.2,
+  "albedo_mix": 1.0,
+  "modulate": "blood colour (per_unit_parameter)",
+  "choice": "lethal hit -> wound03; grazing hit (angle between the shot and the inward surface normal > 50 deg) -> wound02 with its +U streak along the shot tangent; otherwise wound01 / wound04 at random",
+  "placement": "ray-cast the shot (travel direction) against the unit (the skinned mesh or the ragdoll profile shapes posed on the skeleton) -> hit point, surface normal, bone (largest skin weight at the hit). Decal centre = hit point; projection (decal -Y) = normalize(shot - normal) (half-way between the shot and the inward normal, so grazing hits smear a little without stretching); decal +X = the shot tangent on the surface; parent: a BoneAttachment3D on that bone under the unit Skeleton3D, so the decal follows the body through the hit reaction, the death clip and the ragdoll",
+  "cull_mask": "only the unit's own visual layer (VisualInstance3D.layers of its meshes): never the floor or other units (give each unit its own layer, or at least never the floor layer)",
+  "stacking": "each hit adds a decal; beyond max_per_unit the oldest is removed",
+  "spray": "the hit spray starts on the visible skin at the hit point (nudged 4 mm out along the normal) and flies BACK toward the shooter out of the entry wound: direction = normalize(-shot travel + surface normal), the sidecar spray.runtime cone (user correction 2026-10-02)",
+  "source": "Codex image_gen atlas wound_decals_gen_v1.png (AI-generated, provenance sidecar), converted tint-neutral here",
+  "drips": {
+   "sets": {
+    "drip01": {
+     "frames": [
+      "drip01_f00_albedo",
+      "drip01_f01_albedo",
+      "drip01_f02_albedo",
+      "drip01_f03_albedo",
+      "drip01_f04_albedo",
+      "drip01_f05_albedo",
+      "drip01_f06_albedo",
+      "drip01_f07_albedo"
+     ],
+     "normal": "drip01_normal",
+     "orm": "drip01_orm",
+     "coverage_alpha_gt_half_full": 0.344
+    },
+    "drip02": {
+     "frames": [
+      "drip02_f00_albedo",
+      "drip02_f01_albedo",
+      "drip02_f02_albedo",
+      "drip02_f03_albedo",
+      "drip02_f04_albedo",
+      "drip02_f05_albedo",
+      "drip02_f06_albedo",
+      "drip02_f07_albedo"
+     ],
+     "normal": "drip02_normal",
+     "orm": "drip02_orm",
+     "coverage_alpha_gt_half_full": 0.284
+    }
+   },
+   "size_m": [
+    0.26,
+    0.7
+   ],
+   "projection_depth_m": 0.14,
+   "normal_fade": 0.5,
+   "texture_axes": "U across the runs; V down the runs (texture top = the impact point). Godot Decal: U = local +X, V = local +Z, so local +Z = the run direction and the decal centre sits half its length below the hit",
+   "direction": "world down at the moment of the hit, projected onto the surface plane at the hit point; frozen in the hit bone frame afterwards (the runs move and fall with the body, they do not re-orient)",
+   "skip_if_projected_down_below": 0.25,
+   "skip_note": "hits on near-horizontal surfaces (top of the head / shoulders, the underside) get no runs",
+   "grow_s": 1.5,
+   "grow_ease": "out (fast at first, slowing)",
+   "frames": 8,
+   "animation": "swap texture_albedo through the reveal frames over grow_s (normal / ORM fixed: Godot masks them with the albedo alpha)",
+   "top_offset_m": 0.01,
+   "source": "Codex image_gen blood_runs_gen_v1.png (AI-generated, provenance sidecar), masked here"
+  }
+ },
+ "dead_overlay": null,
+ "dead_overlay_note": "dropped (user decision 2026-10-02): wounds are hit-point decals",
+ "decals": {
+  "splat_size_m": [
+   1.0,
+   1.0
+  ],
+  "pool_size_m": [
+   1.4,
+   1.4
+  ],
+  "projection_depth_m": 0.3,
+  "godot": "Decal: texture_albedo/normal/orm, modulate = blood colour, albedo_mix 1, normal_fade .3, upper/lower_fade .3; pool under the frozen corpse, kept inside the death tile"
+ },
+ "spray": {
+  "flipbook": "2x2 (256 px frames), shared Sectoid opus-v3 file",
+  "direction": "+X of the sprite = spray direction",
+  "origin_and_direction": "origin = the ray-cast hit point on the visible skin + 4 mm along the normal; direction = normalize(-shot travel direction + surface normal): back toward the shooter (user correction 2026-10-02)",
+  "burst_origin_uv": [
+   0.2,
+   0.5
+  ],
+  "frame_coverage_alpha_gt_half": [
+   0.05,
+   0.09,
+   0.056,
+   0.042
+  ],
+  "runtime": {
+   "particle_quad_m": 1.05,
+   "amount": 4,
+   "lifetime_s": 0.45,
+   "explosiveness": 1.0,
+   "spread_deg": 16.0,
+   "initial_velocity_mps": [
+    0.5,
+    1.0
+   ],
+   "scale": [
+    0.85,
+    1.15
+   ],
+   "gravity_mps2": -2.0,
+   "up_bias": 0.15,
+   "quad_center_offset_u": 0.2,
+   "fade": "alpha 1 until 75 % of the life, then to 0",
+   "note": "GPUParticles3D, velocity-aligned billboards, 2x2 flipbook played once over the life; quad a little larger than the Sectoid (0.95 m) for the bigger unit"
+  },
+  "godot": "GPUParticles3D billboard (velocity-aligned), particles_anim_h_frames 2, v_frames 2, color = blood colour"
+ },
+ "runtime_files": {
+  "wound01_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound01_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound01_albedo.png",
+   "sha256": "6df4e654a2046fbdab857b1b16a7a3b12411a254a8c81acefef685bacd396aa0",
+   "colorspace": "sRGB"
+  },
+  "wound01_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound01_normal.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound01_normal.png",
+   "sha256": "2e2f32ead19aa9f0be14d189179182ead37609f2dba7cd8a1f3f6a5b0709111c",
+   "colorspace": "Non-Color"
+  },
+  "wound01_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound01_orm.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound01_orm.png",
+   "sha256": "8de179b88c88e3c31e7f6c0ed908146f0d04e14c2cc2df5a4ce6752e2986f662",
+   "colorspace": "Non-Color"
+  },
+  "wound02_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound02_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound02_albedo.png",
+   "sha256": "3bc6a60f64c79f9008a92de6b056bf96abffe93828f3397c8d5a229c6e8cc3b5",
+   "colorspace": "sRGB"
+  },
+  "wound02_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound02_normal.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound02_normal.png",
+   "sha256": "2d300795c8f8d2e0817499e995aeefa43809953ee38726ff4faa9c42609c7a5a",
+   "colorspace": "Non-Color"
+  },
+  "wound02_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound02_orm.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound02_orm.png",
+   "sha256": "19de9785635ab4b683d2d1a7524db673c18fdbda1e40c7bb53aa7f36f01eaf9e",
+   "colorspace": "Non-Color"
+  },
+  "wound03_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound03_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound03_albedo.png",
+   "sha256": "130578d4d85c0d72d14cb48be976c4094b54db5582bd379a2b3da1186d2e2e55",
+   "colorspace": "sRGB"
+  },
+  "wound03_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound03_normal.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound03_normal.png",
+   "sha256": "f254655503d675b09c4756eeaedf8fdd2453436bf6c1dfbb556bac46b76e2193",
+   "colorspace": "Non-Color"
+  },
+  "wound03_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound03_orm.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound03_orm.png",
+   "sha256": "a01fd4047efd70970ecc365e4ac7752ea76f0bb060bec7a48b372417cea02172",
+   "colorspace": "Non-Color"
+  },
+  "wound04_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound04_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound04_albedo.png",
+   "sha256": "cc518c867bbbfcc9cbd46054ba74810fe97783dd6e50c241b8613eeec3353bd6",
+   "colorspace": "sRGB"
+  },
+  "wound04_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound04_normal.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound04_normal.png",
+   "sha256": "cc570d2db141e60b699744b80dcdb3c8f617f0ad54d5c9961c5633717801dff2",
+   "colorspace": "Non-Color"
+  },
+  "wound04_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_wound04_orm.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_wound04_orm.png",
+   "sha256": "231e6151df7c66af6cd42f5dfa7415d5be63939499d884e23f4f561662b1f45b",
+   "colorspace": "Non-Color"
+  },
+  "drip01_f00_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_f00_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f00_albedo.png",
+   "sha256": "a79e8e5deb004c68cc6a47916e90acbbd45dff796f34996f5f4082039f99e39f",
+   "colorspace": "sRGB"
+  },
+  "drip01_f01_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_f01_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f01_albedo.png",
+   "sha256": "e5166392fd89f3fe81735848310a0093f06741be54234e58c9744b75dd00e72b",
+   "colorspace": "sRGB"
+  },
+  "drip01_f02_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_f02_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f02_albedo.png",
+   "sha256": "f557f318232fef3cf79e6b838a802a6b41ef9e4b23ff3fad0b7970239d36dc25",
+   "colorspace": "sRGB"
+  },
+  "drip01_f03_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_f03_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f03_albedo.png",
+   "sha256": "296565b8624918467b1a019f2887c49db062886bd4caa6bf7e36a4531af659d0",
+   "colorspace": "sRGB"
+  },
+  "drip01_f04_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_f04_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f04_albedo.png",
+   "sha256": "554f99806f1000898a9b031dcc55e5c8d3d45e2e8794439c30b499037db19338",
+   "colorspace": "sRGB"
+  },
+  "drip01_f05_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_f05_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f05_albedo.png",
+   "sha256": "f4b522671ab680a7dd284a5ca79b059ec05e930b5c70e5a914fb543781f83138",
+   "colorspace": "sRGB"
+  },
+  "drip01_f06_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_f06_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f06_albedo.png",
+   "sha256": "620b360a10586dc2e9fdd16dfcef47905322b20166ff6a98eb332ddd3f08fe03",
+   "colorspace": "sRGB"
+  },
+  "drip01_f07_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_f07_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_f07_albedo.png",
+   "sha256": "f0a43b3135bb36fe28eb868cfd771a416b87a5b71c22eaa3ee7139f56ccc0411",
+   "colorspace": "sRGB"
+  },
+  "drip01_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_normal.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_normal.png",
+   "sha256": "f2be9e38882cf48468fa862d6cc2a435d82ff77be4c3ee24993c225c6c9e92f9",
+   "colorspace": "Non-Color"
+  },
+  "drip01_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip01_orm.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip01_orm.png",
+   "sha256": "dbea2ba997360a643022104a5ffe41ed711d2428dc1307ceecd7161f051c5e70",
+   "colorspace": "Non-Color"
+  },
+  "drip02_f00_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_f00_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f00_albedo.png",
+   "sha256": "056efe6bb7bcf796646b4f80a5a5b61dc00fe5e9f95fd46d9d25b459c110a2ee",
+   "colorspace": "sRGB"
+  },
+  "drip02_f01_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_f01_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f01_albedo.png",
+   "sha256": "2df89115a8ab7755b14c4123abb1ddf911d03fc4735ffd4cd5af419586a3a22f",
+   "colorspace": "sRGB"
+  },
+  "drip02_f02_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_f02_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f02_albedo.png",
+   "sha256": "49c48b41b17fc683c1f87392d174962dfabd704da2eacd3ec9aef7f8a0b47869",
+   "colorspace": "sRGB"
+  },
+  "drip02_f03_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_f03_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f03_albedo.png",
+   "sha256": "8073c854d72342f10d0851e526b9e9f1d1ab619648d154ee7f0b2f4d11e0a749",
+   "colorspace": "sRGB"
+  },
+  "drip02_f04_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_f04_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f04_albedo.png",
+   "sha256": "549fa7f3224e4320a5cbaed22e7ca13c1cdb38ac44d1daa5f659cdce84f7bd6b",
+   "colorspace": "sRGB"
+  },
+  "drip02_f05_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_f05_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f05_albedo.png",
+   "sha256": "865d898f0182c09fd68d558d9b402caa1981d475e386f180d1afda746fb97328",
+   "colorspace": "sRGB"
+  },
+  "drip02_f06_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_f06_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f06_albedo.png",
+   "sha256": "8b235e71f4d5dd6020b2df9dcb35a49e1d5d53d79aca3dbc22dcab23f0be71d3",
+   "colorspace": "sRGB"
+  },
+  "drip02_f07_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_f07_albedo.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_f07_albedo.png",
+   "sha256": "d4c1ebec895a660241cb43aa1158a605bea3732c1f4a078e79b747f24d176907",
+   "colorspace": "sRGB"
+  },
+  "drip02_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_normal.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_normal.png",
+   "sha256": "229a11768cabf6a776512147b53e799660dd9b163048e0b6a5c97983c1287860",
+   "colorspace": "Non-Color"
+  },
+  "drip02_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/snakeman_opus-v1_drip02_orm.png",
+   "uri_from_model": "../../../textures/units/snakeman_opus-v1_drip02_orm.png",
+   "sha256": "3fe005ea54ee6f5dbd26d24c448d58c745b5b233fc9dadcd83df2bfb0e6f1d2d",
+   "colorspace": "Non-Color"
+  },
+  "splat01_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_splat01_albedo.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat01_albedo.png",
+   "sha256": "e2ae70971931da374b42c6400b8c0b78fa4e7e30d8520a35e1a85040242a1eb7",
+   "colorspace": "sRGB",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "splat01_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_splat01_normal.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat01_normal.png",
+   "sha256": "67b7271f5e3c19afbb73278c45574a6d5aac8b57cc44d7161bb6515b758be097",
+   "colorspace": "Non-Color",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "splat01_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_splat01_orm.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat01_orm.png",
+   "sha256": "83063f64d9f6c8f5de5f68e7db9b8c670b2667438d28e58c0ec5bea8ef186758",
+   "colorspace": "Non-Color",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "splat02_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_splat02_albedo.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat02_albedo.png",
+   "sha256": "903f7d7afae3a6e50c5810815734f72cc386c399f83ea2b42a2aba4ba0e73e49",
+   "colorspace": "sRGB",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "splat02_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_splat02_normal.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat02_normal.png",
+   "sha256": "c43b412280099fbed2cab796361c1c19816dea0f0347ae9e07059e2005b4d6df",
+   "colorspace": "Non-Color",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "splat02_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_splat02_orm.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat02_orm.png",
+   "sha256": "9c1ac15e5038da2328914b2682f3f4ad0bb7d2434952ed458d15f9ab0be66c9a",
+   "colorspace": "Non-Color",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "splat03_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_splat03_albedo.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat03_albedo.png",
+   "sha256": "cf564da078d2c9953a7b4e724873fada85b6a7f0a05ad85bf4fc580792cba860",
+   "colorspace": "sRGB",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "splat03_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_splat03_normal.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat03_normal.png",
+   "sha256": "444523f8091c7aa0953778f201ab2c3ef1db3b9762a255eb49cc95e0852ad637",
+   "colorspace": "Non-Color",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "splat03_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_splat03_orm.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_splat03_orm.png",
+   "sha256": "dcc8b4d91ec7d1c8ec1ff0d69acfa4d7f90c88020b2d624777a98e8d397a25ac",
+   "colorspace": "Non-Color",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "pool_albedo": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_pool_albedo.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_pool_albedo.png",
+   "sha256": "3eacdadaf0305f062144d83127e9583736afa4d6cc47b5d4c29b13dc856c800c",
+   "colorspace": "sRGB",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "pool_normal": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_pool_normal.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_pool_normal.png",
+   "sha256": "d82144de4f4bdda47102ee9c1ded7d7a8d0a56f0b784eaa8f70c5a9bcdbbc438",
+   "colorspace": "Non-Color",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "pool_orm": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v1_blood_pool_orm.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v1_blood_pool_orm.png",
+   "sha256": "4fbb7ad9317f1461b6d9c1f1c57ee58efc8b1381ad7582c0d47ff9b6e7c7d46b",
+   "colorspace": "Non-Color",
+   "shared_with": "units/SECTOID opus-v1..v3, FLOATER"
+  },
+  "spray_flipbook": {
+   "path": "art/team/units_opus55/exports/snakeman_v01/s9/assets/textures/units/sectoid_opus-v3_blood_spray_flipbook_2x2.png",
+   "uri_from_model": "../../../textures/units/sectoid_opus-v3_blood_spray_flipbook_2x2.png",
+   "sha256": "eed9109f08135c71996f051746d9b5d8338ab28341dc26b43a5ae22a3e82a1ea",
+   "colorspace": "sRGB",
+   "shared_with": "units/SECTOID opus-v3"
+  }
+ }
+}

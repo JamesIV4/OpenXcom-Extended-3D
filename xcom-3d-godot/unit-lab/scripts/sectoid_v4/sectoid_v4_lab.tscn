@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/sectoid_v4/sectoid_v4_lab_main.gd" id="1"]
+
+[node name="SectoidV4Lab" type="Node3D"]
+script = ExtResource("1")
