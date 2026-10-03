@@ -1,6 +1,116 @@
 # Reference files
 /reference
 
+# Local decoded reference output (the generators in art/tools stay tracked)
+/art/reference/**
+!/art/reference/**/
+!/art/reference/**/*.py
+!/art/reference/**/*.ps1
+!/art/reference/**/*.sh
+!/art/reference/**/*.bat
+
+# Artwork experiments, review renders, and temporary exports.
+# Canonical editable sources are in art/source; runtime art is in the main
+# Godot project's assets directory. Keep helper code in every art directory.
+/art/**/*.png
+/art/**/*.jpg
+/art/**/*.jpeg
+/art/**/*.webp
+/art/**/*.exr
+/art/**/*.hdr
+/art/**/*.tga
+/art/**/*.tif
+/art/**/*.tiff
+/art/**/*.gif
+/art/**/*.mp4
+/art/**/*.npy
+/art/**/*.npz
+/art/**/*.blend
+/art/**/*.gltf
+/art/**/*.glb
+/art/**/*.bin
+/art/**/*.import
+!/art/source/**/*.blend
+!/art/team/**/editable/**/*.blend
+# Authored texture required by the editable human source/export helper.
+!/art/team/units_opus55/textures/v01/hair_male_cards_basecolor.png
+# Downloaded texture libraries are local inputs, not finished artwork.
+/art/source/cc0_library/**
+!/art/source/cc0_library/**/
+!/art/source/cc0_library/**/*.py
+!/art/source/cc0_library/**/*.ps1
+!/art/source/cc0_library/**/*.json
+
+# Generated reports/captures; allow the scripts that produce them.
+/art/review/**
+!/art/review/**/
+!/art/review/**/*.py
+!/art/review/**/*.ps1
+!/art/review/**/*.gd
+!/art/review/**/*.gd.uid
+!/art/review/**/*.sh
+!/art/review/**/*.bat
+/xcom-3d-godot/**/assets/review_diagnostics/
+/xcom-3d-godot/labs/**/assets/
+/xcom-3d-godot/perf-lab/assets/
+/xcom-3d-godot/perf-lab/results/
+/xcom-3d-godot/unit-lab/assets/
+# Other lab screenshots/exports, without hiding lab code, scenes or shaders.
+/xcom-3d-godot/labs/**/*.png
+/xcom-3d-godot/labs/**/*.jpg
+/xcom-3d-godot/labs/**/*.gltf
+/xcom-3d-godot/labs/**/*.glb
+/xcom-3d-godot/labs/**/*.bin
+/xcom-3d-godot/labs/**/*.blend
+/xcom-3d-godot/labs/**/*.import
+/xcom-3d-godot/perf-lab/**/*.png
+/xcom-3d-godot/unit-lab/**/*.png
+
+# Blender backups and Godot/build caches (Godot .import settings and .uid
+# files outside generated lab assets are source metadata, so keep those).
+*.blend[0-9]*
+**/.godot/
+/native/third_party/
+/native/build/
+/native/extension_api.json
+**/.sconsign.dblite
+**/__pycache__/
+/xcom-3d-godot/x-com--ufo-defense-3d/native/*.a
+
+# Additional native, CMake, Python and editor build artifacts
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+build.ninja
+rules.ninja
+.ninja_deps
+.ninja_log
+*.a
+*.so
+*.so.*
+*.dylib
+*.lo
+*.la
+*.d
+*.gch
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.pck
+*.apk
+*.aab
+*.err
+*.TMP
+dist/
+out/
+/obj/*
+!/obj/.gitkeep
+.vscode/
+
 # autotools
 aclocal.m4
 m4/pkg.m4
