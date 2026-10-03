@@ -66,6 +66,82 @@
 /xcom-3d-godot/perf-lab/**/*.png
 /xcom-3d-godot/unit-lab/**/*.png
 
+# Art build evidence: trial receipts, measurements, scratch exports and captures.
+# Match directory contents so code helpers within these trees can be retained.
+/art/team/**/diagnostics/**
+/art/team/**/trials/**
+/art/team/**/trial/**
+/art/team/**/texture_trials/**
+/art/team/**/working/**
+/art/team/**/failed/**
+/art/team/**/replaced_drafts/**
+/art/team/**/exports/**
+/art/team/**/renders/**
+/art/team/**/render/**
+/art/team/**/captures/**
+/art/team/**/scratch/**
+/art/team/**/cancelled/**
+/art/team/**/manifests/**
+/art/team/**/selected_manifests/**
+/art/team/**/assembly/**
+/art/team/**/assemblies/**
+/art/team/**/interface/**
+# Generated JSON reports outside the above output directories. Scope these to
+# team workspaces; runtime sidecars, catalogs and authored recipes stay visible.
+/art/team/**/build_manifest.json
+/art/team/**/trial_manifest.json
+/art/team/**/metrics.json
+/art/team/**/stats.json
+/art/team/**/results*.json
+/art/team/**/summary.json
+/art/team/**/build_summary*.json
+/art/team/**/final_build_summary*.json
+/art/team/**/build_log.json
+/art/team/**/metric_manifest.json
+/art/team/**/texture_manifest.json
+/art/team/**/review_manifest.json
+/art/team/**/render_manifest.json
+/art/team/**/sheet_manifest.json
+/art/team/**/views.json
+/art/team/**/*validation*.json
+/art/team/**/*audit*.json
+/art/team/**/assembly_report.json
+/art/team/**/assembly_manifest.json
+/art/team/**/selected_exports.json
+/art/team/**/selected_review_sheets.json
+/art/team/**/root_gate*.json
+/art/team/**/*gates*.json
+/art/team/**/pixel_dumps.json
+/art/team/**/checkpoint.json
+# Keep tool implementations and their documentation, even inside scratch trees.
+!/art/team/**/
+!/art/team/**/*.py
+!/art/team/**/*.ps1
+!/art/team/**/*.bat
+!/art/team/**/*.sh
+!/art/team/**/*.gd
+!/art/team/**/*.gd.uid
+!/art/team/**/*.gdshader
+!/art/team/**/*.gdshaderinc
+!/art/team/**/*.tscn
+!/art/team/**/project.godot
+!/art/team/**/*.md
+# Editable sources retain the same exceptions as above.
+!/art/team/**/editable/**/*.blend
+
+# Console dumps and capture receipts are generated; prompts/recipes are inputs.
+/art/**/*log*.txt
+/art/**/stdout*.txt
+/art/**/stderr*.txt
+/art/**/*_dump.txt
+/art/**/*_measure.txt
+/xcom-3d-godot/labs/**/*log*.txt
+/xcom-3d-godot/labs/**/*stdout*.txt
+/xcom-3d-godot/labs/**/*stderr*.txt
+/xcom-3d-godot/labs/**/captures/*.json
+/xcom-3d-godot/labs/**/lab_export*.json
+*.before_*
+
 # Blender backups and Godot/build caches (Godot .import settings and .uid
 # files outside generated lab assets are source metadata, so keep those).
 *.blend[0-9]*
